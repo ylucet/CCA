@@ -1,0 +1,92 @@
+﻿<html><head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>gph_isBounded</title>
+    <style type="text/css" media="all">
+      @import url("xml_code.css");
+      @import url("c_code.css");
+      @import url("style.css");
+    </style>
+  </head>
+  <body>
+    <div class="manualnavbar">
+    <table width="100%"><tr>
+      <td width="30%">
+    	<span class="previous"><a href="gph_function.html">&lt;&lt; gph_function</a></span>
+
+      </td>
+      <td width="40%" class="center">
+      	<span class="top"><a href="section_076511024e3715b9151c202a48bf3fcf.html">gph</a></span>
+
+      </td>
+      <td width="30%" class="next">
+      	<span class="next"><a href="gph_isEqual.html">gph_isEqual &gt;&gt;</a></span>
+
+      </td>
+    </tr></table>
+      <hr />
+    </div>
+
+
+
+    <span class="path"><a href="index.html">CCA (Computational Convex Analysis)</a> &gt;&gt; <a href="section_076511024e3715b9151c202a48bf3fcf.html">gph</a> &gt; gph_isBounded</span>
+
+    <br /><br />
+    <div class="info"></div>
+
+  <div class="refnamediv"><h1 class="refname">gph_isBounded</h1>
+    <p class="refpurpose">Graph-matrix calculus (GPH), Function domain bounded test</p></div>
+
+   <div class="refsynopsisdiv"><h3 class="title">Calling Sequence</h3>
+     <div class="synopsis"><pre><span class="default">B</span><span class="default"> = </span><span class="functionid">gph_isBounded</span><span class="default">(</span><span class="default">gph</span><span class="default">)</span></pre></div></div>
+
+   <div class="refsection"><h3 class="title">Parameters</h3>
+     <dl><dt><span class="term">gph</span>
+         <dd><p class="para">matrix.  A function in GPH matrix form.</p></dd></dt>
+
+       <dt><span class="term">B</span>
+         <dd><p class="para">1x2 boolean matrix.  Whether the function is left- or right-bounded.</p></dd></dt></dl></div>
+
+   <div class="refsection"><h3 class="title">Description</h3>
+
+     <p class="para">Returns a 1x2 boolean matrix B indicating whether the domain of
+       the given function is left- or right-bounded.
+
+       <ul class="itemizedlist"><li>B(1) == 1, if and only if gph&#0039;s domain is left-bounded.</li>
+         <li>B(2) == 1, if and only if gph&#0039;s domain is left-bounded.</li></ul></p></div>
+
+   <div class="refsection"><h3 class="title">Examples</h3>
+     <div class="programlisting"><table border="0" width="100%"><tr><td width="98%"><pre class="scilabcode"><span class="scilabid">gph</span> <span class="scilaboperator">=</span> <span class="scilabopenclose">[</span><span class="scilaboperator">-</span><span class="scilabnumber">1</span><span class="scilabdefault">,</span>  <span class="scilabnumber">0</span><span class="scilabdefault">,</span> <span class="scilabnumber">0</span><span class="scilabdefault">,</span> <span class="scilabnumber">1</span><span class="scilabdefault">,</span> <span class="scilabnumber">2</span><span class="scilabdefault">;</span> <span class="scilabspecial">...</span>
+       <span class="scilaboperator">-</span><span class="scilabnumber">1</span><span class="scilabdefault">,</span> <span class="scilaboperator">-</span><span class="scilabnumber">1</span><span class="scilabdefault">,</span> <span class="scilabnumber">0</span><span class="scilabdefault">,</span> <span class="scilabnumber">0</span><span class="scilabdefault">,</span> <span class="scilabnumber">2</span><span class="scilabdefault">;</span> <span class="scilabspecial">...</span>
+        <span class="scilabnumber">1</span><span class="scilabdefault">,</span>  <span class="scilabnumber">0</span><span class="scilabdefault">,</span> <span class="scilabnumber">0</span><span class="scilabdefault">,</span> <span class="scilabnumber">0</span><span class="scilabdefault">,</span> <span class="scilabnumber">1</span><span class="scilabopenclose">]</span><span class="scilabdefault">;</span>
+<span class="scilabid">B</span> <span class="scilaboperator">=</span> <span class="scilabid">gph_isBounded</span><span class="scilabopenclose">(</span><span class="scilabid">gph</span><span class="scilabopenclose">)</span>
+
+<span class="scilabid">gph</span> <span class="scilaboperator">=</span> <span class="scilabopenclose">[</span><span class="scilabnumber">0</span><span class="scilabdefault">,</span> <span class="scilabnumber">0</span><span class="scilabdefault">,</span> <span class="scilabnumber">1</span><span class="scilabdefault">;</span> <span class="scilabspecial">...</span>
+       <span class="scilabnumber">0</span><span class="scilabdefault">,</span> <span class="scilabnumber">1</span><span class="scilabdefault">,</span> <span class="scilabnumber">1</span><span class="scilabdefault">;</span> <span class="scilabspecial">...</span>
+       <span class="scilabnumber">0</span><span class="scilabdefault">,</span> <span class="scilabnumber">0</span><span class="scilabdefault">,</span> <span class="scilabnumber">1</span><span class="scilabopenclose">]</span><span class="scilabdefault">;</span>
+<span class="scilabid">B</span> <span class="scilaboperator">=</span> <span class="scilabid">gph_isBounded</span><span class="scilabopenclose">(</span><span class="scilabid">gph</span><span class="scilabopenclose">)</span></pre></td><td valign="top">&nbsp;</td><td valign="top">&nbsp;</td><td></td></tr></table></div></div>
+
+   <div class="refsection"><h3 class="title">See Also</h3>
+     <ul class="itemizedlist"><li class="member"><a href="gph_function.html" class="link">gph_function</a></li></ul></div>
+
+   <div class="refsection"><h3 class="title">Authors</h3>
+     <p class="para"><code class="literal">Bryan Gardiner</code>, University of British Columbia, BC, Canada</p></div>
+      <div class="manualnavbar">
+          <table width="100%">
+<tr>
+      <td width="30%">
+    	<span class="previous"><a href="gph_function.html">&lt;&lt; gph_function</a></span>
+
+      </td>
+      <td width="40%" class="center">
+      	<span class="top"><a href="section_076511024e3715b9151c202a48bf3fcf.html">gph</a></span>
+
+      </td>
+      <td width="30%" class="next">
+      	<span class="next"><a href="gph_isEqual.html">gph_isEqual &gt;&gt;</a></span>
+
+      </td>
+    </tr></table>
+      <hr />
+    </div>
+  </body>
+</html>

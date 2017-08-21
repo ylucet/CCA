@@ -1,0 +1,106 @@
+﻿<html><head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>plq_co</title>
+    <style type="text/css" media="all">
+      @import url("xml_code.css");
+      @import url("c_code.css");
+      @import url("style.css");
+    </style>
+  </head>
+  <body>
+    <div class="manualnavbar">
+    <table width="100%"><tr>
+      <td width="30%">
+    	<span class="previous"><a href="plq_clean.html">&lt;&lt; plq_clean</a></span>
+
+      </td>
+      <td width="40%" class="center">
+      	<span class="top"><a href="section_0f3ad76c2c3a02c3ad79b8b18f6e5928.html">plq</a></span>
+
+      </td>
+      <td width="30%" class="next">
+      	<span class="next"><a href="plq_coDirect.html">plq_coDirect &gt;&gt;</a></span>
+
+      </td>
+    </tr></table>
+      <hr />
+    </div>
+
+
+
+    <span class="path"><a href="index.html">CCA (Computational Convex Analysis)</a> &gt;&gt; <a href="section_0f3ad76c2c3a02c3ad79b8b18f6e5928.html">plq</a> &gt; plq_co</span>
+
+    <br /><br />
+    <div class="info"></div>
+
+  <div class="refnamediv"><h1 class="refname">plq_co</h1>
+    <p class="refpurpose">Piecewise linear quadratic (plq), Convex hull</p></div>
+
+   <div class="refsynopsisdiv"><h3 class="title">Calling Sequence</h3>
+     <div class="synopsis"><pre><span class="default">plqco</span><span class="default"> = </span><span class="default">plq_coSplit</span><span class="default">(</span><span class="default">plqf</span><span class="default"> [,</span><span class="default">method</span><span class="default">])</span></pre></div></div>
+
+   <div class="refsection"><h3 class="title">Parameters</h3>
+     <dl><dt><span class="term">plqf</span>
+         <dd><p class="para">matrix. A plq function whose convex hull will be computed.</p></dd></dt>
+
+       <dt><span class="term">method</span>
+         <dd><p class="para">optional string (default &#0034;direct&#0034;). Selects the algorithm used.  May be &#0034;direct&#0034; or &#0034;split&#0034;.</p></dd></dt>
+
+       <dt><span class="term">plqco</span>
+         <dd><p class="para">matrix. A plq function that is the convex hull of the original function.</p></dd></dt></dl></div>
+
+   <div class="refsection"><h3 class="title">Description</h3>
+
+     <p class="para">Computes the convex hull of a continuous, but not necessarily
+       convex, plq function, where the input and output are given in
+       the form of a plq matrix.</p>
+
+     <p class="para">The method argument selects which algorithm to use.  The
+       default is to use the faster, linear-time plq_coDirect
+       algorithm, denoted by &#0034;direct&#0034;.  The plq_coSplit algorithm,
+       which is based on convex duality, may be used as well, by
+       specifying &#0034;split&#0034;.</p></div>
+
+   <div class="refsection"><h3 class="title">Examples</h3>
+     <div class="programlisting"><table border="0" width="100%"><tr><td width="98%"><pre class="scilabcode">%<span class="scilabcomment"> The hull of a linear-linear-quadratic function:</span>
+<span class="scilabid">plqf</span> <span class="scilaboperator">=</span> <span class="scilabopenclose">[</span><span class="scilabnumber">0</span><span class="scilabdefault">,</span><span class="scilabnumber">0</span><span class="scilabdefault">,</span><span class="scilabnumber">0</span><span class="scilabdefault">,</span><span class="scilabconstants">inf</span><span class="scilabdefault">;</span> <span class="scilabnumber">1</span><span class="scilabdefault">,</span><span class="scilabnumber">0</span><span class="scilabdefault">,</span><span class="scilaboperator">-</span><span class="scilabnumber">1</span><span class="scilabdefault">,</span><span class="scilabnumber">1</span><span class="scilabdefault">;</span> <span class="scilabnumber">2</span><span class="scilabdefault">,</span><span class="scilabnumber">0</span><span class="scilabdefault">,</span><span class="scilabnumber">1</span><span class="scilabdefault">,</span><span class="scilaboperator">-</span><span class="scilabnumber">1</span><span class="scilabdefault">;</span> <span class="scilabnumber">3</span><span class="scilabdefault">,</span><span class="scilabnumber">0</span><span class="scilabdefault">,</span><span class="scilaboperator">-</span><span class="scilabnumber">1</span><span class="scilabdefault">,</span><span class="scilabnumber">3</span><span class="scilabdefault">;</span> <span class="scilabnumber">4</span><span class="scilabdefault">,</span><span class="scilabnumber">0</span><span class="scilabdefault">,</span><span class="scilabnumber">1</span><span class="scilabdefault">,</span><span class="scilaboperator">-</span><span class="scilabnumber">3</span><span class="scilabdefault">;</span> <span class="scilabconstants">inf</span><span class="scilabdefault">,</span><span class="scilabnumber">0</span><span class="scilabdefault">,</span><span class="scilabnumber">0</span><span class="scilabdefault">,</span><span class="scilabconstants">inf</span><span class="scilabopenclose">]</span><span class="scilabdefault">;</span>
+<span class="scilabid">result</span> <span class="scilaboperator">=</span> <span class="scilabid">plq_co</span><span class="scilabopenclose">(</span><span class="scilabid">plqf</span><span class="scilabopenclose">)</span><span class="scilabdefault">,</span>
+<span class="scilabid">plq_plotMultiple</span><span class="scilabopenclose">(false</span><span class="scilabdefault">,</span> <span class="scilabconstants">false</span><span class="scilabdefault">,</span> <span class="scilabid">plqf</span><span class="scilabdefault">,</span> <span class="scilabid">result</span><span class="scilabopenclose">)</span><span class="scilabdefault">;</span>
+
+<span class="scilabcomment">% The hull of a more complicated function:</span>
+<span class="scilabid">plqf</span> <span class="scilaboperator">=</span> <span class="scilabopenclose">[</span><span class="scilaboperator">-</span><span class="scilabnumber">5</span><span class="scilabdefault">,</span><span class="scilabnumber">0</span><span class="scilabdefault">,</span><span class="scilabnumber">0</span><span class="scilabdefault">,</span><span class="scilabconstants">inf</span><span class="scilabdefault">;</span> <span class="scilaboperator">-</span><span class="scilabnumber">4</span><span class="scilabdefault">,</span><span class="scilabnumber">0</span><span class="scilabdefault">,</span><span class="scilabnumber">0</span><span class="scilabdefault">,</span><span class="scilabnumber">4</span><span class="scilabdefault">;</span> <span class="scilaboperator">-</span><span class="scilabnumber">3</span><span class="scilabdefault">,</span><span class="scilabnumber">0</span><span class="scilabdefault">,</span><span class="scilaboperator">-</span><span class="scilabnumber">1</span><span class="scilabdefault">,</span><span class="scilabnumber">0</span><span class="scilabdefault">;</span> <span class="scilaboperator">-</span><span class="scilabnumber">2</span><span class="scilabdefault">,</span><span class="scilabnumber">0</span><span class="scilabdefault">,</span><span class="scilaboperator">-</span><span class="scilabnumber">2</span><span class="scilabdefault">,</span><span class="scilaboperator">-</span><span class="scilabnumber">3</span><span class="scilabdefault">;</span> <span class="scilabnumber">0</span><span class="scilabdefault">,</span><span class="scilabnumber">0</span><span class="scilabdefault">,</span><span class="scilaboperator">-</span><span class="scilabnumber">0.5</span><span class="scilabdefault">,</span><span class="scilabnumber">0</span><span class="scilabdefault">;</span> <span class="scilabspecial">..</span>
+        <span class="scilabnumber">1</span><span class="scilabdefault">,</span><span class="scilabnumber">0</span><span class="scilabdefault">,</span><span class="scilabnumber">1</span><span class="scilabdefault">,</span><span class="scilabnumber">0</span><span class="scilabdefault">;</span> <span class="scilabnumber">2</span><span class="scilabdefault">,</span><span class="scilabnumber">0</span><span class="scilabdefault">,</span><span class="scilabnumber">0</span><span class="scilabdefault">,</span><span class="scilabnumber">1</span><span class="scilabdefault">;</span> <span class="scilabnumber">3</span><span class="scilabdefault">,</span><span class="scilabnumber">0</span><span class="scilabdefault">,</span><span class="scilabnumber">1</span><span class="scilabdefault">,</span><span class="scilaboperator">-</span><span class="scilabnumber">1</span><span class="scilabdefault">;</span> <span class="scilabnumber">4</span><span class="scilabdefault">,</span><span class="scilabnumber">0</span><span class="scilabdefault">,</span><span class="scilaboperator">-</span><span class="scilabnumber">1</span><span class="scilabdefault">,</span><span class="scilabnumber">5</span><span class="scilabdefault">;</span> <span class="scilabnumber">5</span><span class="scilabdefault">,</span><span class="scilabnumber">0</span><span class="scilabdefault">,</span><span class="scilabnumber">1</span><span class="scilabdefault">,</span><span class="scilaboperator">-</span><span class="scilabnumber">3</span><span class="scilabdefault">;</span> <span class="scilabnumber">6</span><span class="scilabdefault">,</span><span class="scilabnumber">0</span><span class="scilabdefault">,</span><span class="scilabnumber">2</span><span class="scilabdefault">,</span><span class="scilaboperator">-</span><span class="scilabnumber">8</span><span class="scilabdefault">;</span> <span class="scilabspecial">..</span>
+        <span class="scilabnumber">6.5</span><span class="scilabdefault">,</span><span class="scilabnumber">0</span><span class="scilabdefault">,</span><span class="scilabnumber">0</span><span class="scilabdefault">,</span><span class="scilabnumber">4</span><span class="scilabdefault">;</span> <span class="scilabconstants">inf</span><span class="scilabdefault">,</span><span class="scilabnumber">0</span><span class="scilabdefault">,</span><span class="scilabnumber">2</span><span class="scilabdefault">,</span><span class="scilaboperator">-</span><span class="scilabnumber">9</span><span class="scilabopenclose">]</span><span class="scilabdefault">;</span>
+<span class="scilabid">result</span> <span class="scilaboperator">=</span> <span class="scilabid">plq_co</span><span class="scilabopenclose">(</span><span class="scilabid">plqf</span><span class="scilabopenclose">)</span><span class="scilabdefault">,</span>
+<span class="scilabid">plq_plotMultiple</span><span class="scilabopenclose">(</span><span class="scilabconstants">false</span><span class="scilabdefault">,</span> false<span class="scilabdefault">,</span> <span class="scilabid">plqf</span><span class="scilabdefault">,</span> <span class="scilabid">result</span><span class="scilabopenclose">)</span><span class="scilabdefault">;</span></pre></td></tr></table></div></div>
+
+   <div class="refsection"><h3 class="title">See Also</h3>
+     <ul class="itemizedlist"><li class="member"><a href="plq_coDirect.html" class="link">plq_coDirect</a></li>
+       <li class="member"><a href="plq_coSplit.html" class="link">plq_coSplit</a></li>
+       <li class="member"><a href="plq_function.html" class="link">plq_function</a></li></ul></div>
+
+   <div class="refsection"><h3 class="title">Authors</h3>
+     <p class="para"><code class="literal">Bryan Gardiner</code>, University of British Columbia, BC, Canada</p></div>
+
+   <div class="refsection"><h3 class="title">Bibliography</h3>
+     <ul class="itemizedlist"><li>B. Gardiner, Y. Lucet, Submitted February 2010, Convex Hull Algorithms for Piecewise Linear-Quadratic Functions in Computational Convex Analysis.</li></ul></div>
+      <div class="manualnavbar">
+          <table width="100%">
+<tr>
+      <td width="30%">
+    	<span class="previous"><a href="plq_clean.html">&lt;&lt; plq_clean</a></span>
+
+      </td>
+      <td width="40%" class="center">
+      	<span class="top"><a href="section_0f3ad76c2c3a02c3ad79b8b18f6e5928.html">plq</a></span>
+
+      </td>
+      <td width="30%" class="next">
+      	<span class="next"><a href="plq_coDirect.html">plq_coDirect &gt;&gt;</a></span>
+
+      </td>
+    </tr></table>
+      <hr />
+    </div>
+  </body>
+</html>

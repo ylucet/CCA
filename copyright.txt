@@ -1,0 +1,47 @@
+Computational Convex Analysis Library for univariate functions
+
+The copyright model used is to ask all contributor to the code source for all rights to be assigned to the PI (Yves Lucet). Then selected parts of the code are released under various licenses (code in Netlib is public domain, other parts were released as GPL). 
+
+- The very first version was coded in Pascal, and released as public domain 1997.
+- An initial version was coded for Maple, and released as GPL around 2004.
+- (A partial translation into C was never completed, and never released, 1998.) 
+- The current version is coded for Scilab, 2004- and released under GPL 3.0+
+- A MATLAB version was released in 2017 under GPL 3.0+
+
+The THEORY was published in the following papers:
+- Y. Lucet. Techniques and Open Questions in Computational Convex Analysis. Submitted January 30, 2012. Accepted Jan 9, 2013 in Springer Proceedings in Mathematics & Statistics, Vol. 50, Computational and Analytical Mathematics, a special issue in Honor of Jonathan Borwein's 60th Birthday.
+- Y. Lucet. What Shape is your Conjugate? A Survey of Computational Convex Analysis and its Applications,. SIGEST section of SIAM Review. Volume 52, Issue 3, pp. 505-542 (2010). Revised version submitted on March 11, 2010. Published August 5, 2010.
+- V. Koch, J. Johnstone and Y. Lucet. Convexity of the Proximal Average. Submitted June 29, 2009. Accepted in Journal of Optimization Theory and Applications on June 14, 2010.
+- Y. Lucet. What Shape is your Conjugate? A Survey of Computational Convex Analysis and its Applications,. Volume 20, Number 1, Pages 216-250. Accepted in SIAM Journal of Optimization on December 2, 2008.
+- Y. Lucet. Hybrid Symbolic-Numeric Algorithms for Computational Convex Analysis. 6th International Congress on Industrial and Applied Mathematics, Zurich Switzerland, July 2007. Submitted October 16, 2007.
+- H. H. Bauschke, R. Goebel, Y. Lucet and S. Wang. The Proximal Average: Basic Theory. Volume 19, Number 2, 766-785, 2008. Submitted in April 2007. Accepted March 5, 2008. Published on line July 3, 2008 in SIAM Journal of Optimization.
+- H. H. Bauschke, Y. Lucet and S. Wang. Primal-Dual Symmetric Intrinsic Methods for Finding Antiderivatives of Cyclically Monotone Operators. (Submitted 2006, accepted July 2007.)SIAM Journal of Control and Optimization (SICON), Volume 46 Issue 6, Pages 2031-2051, 2007.
+- H. H. Bauschke, Y. Lucet, and M. Trienis. How To Transform One Convex Function Continuously Into Another. Submitted in July 2006. Accepted in SIAM Review on June 19, 2007.
+
+The ALGORITHMS were published in the following papers:
+- B. Gardiner and Y. Lucet. Convex Hull Algorithms for Piecewise Linear-Quadratic Functions in Computational Convex Analysis. Submitted Feb 2010. Accepted on Aug 10, 2010 in Set-Valued and Variational Analysis.
+- B. Gardiner and Y. Lucet. Graph-Matrix Calculus for Computational Convex Analysis. Submitted Jan 2010. Accepted Aug 18, 2010 in the book "Fixed-Point Algorithms for Inverse Problems in Science and Engineering", part of the Springer Verlag series Optimization and Its Applications
+- B. Gardiner and Y. Lucet. Numerical Computation of Fitzpatrick Functions. Volume 16, Number 4. Submitted May 15, 2008; Accepted in Journal of Convex Analysis on January 7, 2009.
+- Y. Lucet, H. H. Bauschke, and M. Trienis. The Piecewise Linear-Quadratic Model for Computational Convex Analysis. Submitted in July 2006. Accepted in Computational Optimization and Applications on June 21, 2007.
+- Y. Lucet, 2006. Fast Moreau Envelope Computation I: Numerical Algorithms. Accepted for publication on November 29, 2006.  Numerical Algorithms, Volume 43, Number 3 / November 2006.
+- Y. Lucet, 2006. New Sequential Exact Euclidean Distance Transform Algorithms based on Convex Analysis. Accepted for publication in a special issue of Image and Vision Computing on July 3, 2006.
+- J.-B. Hiriart-Urruty and Y. Lucet, 2006. Parametric computation of the Legendre-Fenchel Conjugate with application to the computation of the Moreau envelope. Accepted for publication on June 7, 2006 in Journal of Convex Analysis, Volume 14, Number 3 / August 2007.
+- Y. Lucet, 2005. A linear Euclidean distance transform algorithm based on the Linear-time Legendre Transform. Proceedings of the Second Canadian Conference on Computer and Robot Vision (CRV 2005), IEEE Computer Society Press, 2005.
+- Y. Lucet, 1998. The Legendre-Fenchel conjugate: Numerical computation, preprint CECM 98:114. Simon Fraser University.
+- Y. Lucet, 1997. Faster than the fast Legendre transform, the linear-time Legendre transform. Numerical Algorithms, 16(2):171-185.
+- Y. Lucet, 1996. A fast computational algorithm for the Legendre-Fenchel transform. Computational Optimization and Applications, 6(1):27-57.
+ 
+Part of the CODE was published along with the following papers:
+- Y. Lucet, 2006. Fast Moreau Envelope Computation I: Numerical Algorithms. Accepted for publication on November 29, 2006.  Numerical Algorithms, Volume 43, Number 3 / November 2006. Scilab code in Netlib.
+- Y. Lucet, 1997. Faster than the fast Legendre transform, the linear-time Legendre transform. Numerical Algorithms, 16(2):171-185. Pascal code in Netlib.
+- A preliminary version of the code, developed during my postdoc at SFU in 1997-1999, was coded in Maple, and made available through the GPL license. My postdoc supervisor (Jon Borwein) assigned all rights to me.
+
+Contributors:
+- Yves Lucet (PI, 1996-2012)
+- Deepak Kumar (Research Assistant MITACS Globalink  2015)
+- Jakee Khan (Research Assistant 2011-2012)
+- Bryan Gardiner (Research Assistant & USRA 2008-2011)
+- Scott Fazackerley (USRA 2007, Honours student 2007-08)
+- Michael Trienis (M.Sc. student 2006-2007)
+- Jeff Dicker (USRA student 2005)
+- Andrew Tonner (Research Assistant 2005)

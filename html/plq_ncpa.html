@@ -1,0 +1,23 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>plq_ncpa</title><link rel="stylesheet" href="javahelp.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.73.2"><link rel="start" href="index.html" title="CCA (Computational Convex Analysis)"><link rel="up" href="section_4768219997f2932d1970ff70dcc9cef9.html" title="Part&nbsp;I.&nbsp;CCA (Computational Convex Analysis)"><link rel="prev" href="plq_minPt.html" title="plq_minPt"><link rel="next" href="plq_pa.html" title="plq_pa"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="refentry" lang="en"><a name="plq_ncpa"></a><div class="titlepage"></div><div class="refnamediv"><h2>Name</h2><p>plq_ncpa &#8212; Piecewise linear quadratic (plq), nonconvex proximal average</p></div><div class="refsynopsisdiv"><h2>Calling Sequence</h2><pre class="synopsis">pa = plq_ncpa(p0, p1, lambda, r)</pre></div><div class="refsection" lang="en"><a name="d0e6805"></a><h2>Parameters</h2><div class="variablelist"><dl><dt><span class="term">p0, p1</span></dt><dd><p>matrices. PLQ functions.</p></dd><dt><span class="term">lambda</span></dt><dd><p>constant in [0,1].  lambda1 = 1 - lambda.  lambda2 = lambda.</p></dd><dt><span class="term">r</span></dt><dd><p>positive constant.  Parameter to the Moreau envelope.</p></dd></dl></div></div><div class="refsection" lang="en"><a name="d0e6827"></a><h2>Description</h2><p>
+       Computes the nonconvex proximal average of two (potentially
+       nonconvex) PLQ functions p0 and p1, via the formula
+       </p><pre class="programlisting">
+    PA[r,lambda1,lambda2](p0, p1) = -M[1/(r+lambda1*lambda2)] ( -lambda1 M[1/r](f) - lambda2 M[1/r](g) ),
+</pre><p>
+       where M[k] is the Moreau envelope with smoothing parameter k.
+     </p><p>
+       This algorithm runs in O(n + m) time, where n and m are the
+       number of pieces in p0 and p1, respectively.
+     </p></div><div class="refsection" lang="en"><a name="d0e6837"></a><h2>Examples</h2><pre class="programlisting">
+p0 = [0,0,0.5,-1; inf,0,-0.5,-1];
+p1 = [inf,0.25,0,0];
+pa = plq_ncpa(p0,p1,0.5,1),
+plq_plotMultiple(-5, 5, p0, p1, pa);
+
+</pre></div><div class="refsection" lang="en"><a name="d0e6842"></a><h2>See Also</h2><span class="simplelist"><a class="link" href="plq_function.html" title="plq_function">plq_function</a></span></div><div class="refsection" lang="en"><a name="d0e6849"></a><h2>Authors</h2><p>
+       <code class="literal">Bryan Gardiner</code>, University of British Columbia, BC, Canada
+     </p></div><div class="refsection" lang="en"><a name="d0e6857"></a><h2>Bibliography</h2><div class="itemizedlist"><ul type="disc"><li>
+         W. L. Hare.  The Proximal Average of Nonconvex Functions: A Proximal Point Perspective.  SIAM Journal on Optimization, 20(2), pp.650-666, 2009.
+       </li></ul></div></div></div></body></html>

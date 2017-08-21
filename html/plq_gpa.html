@@ -1,0 +1,100 @@
+﻿<html><head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>plq_gpa</title>
+    <style type="text/css" media="all">
+      @import url("xml_code.css");
+      @import url("c_code.css");
+      @import url("style.css");
+    </style>
+  </head>
+  <body>
+    <div class="manualnavbar">
+    <table width="100%"><tr>
+      <td width="30%">
+    	<span class="previous"><a href="plq_function.html">&lt;&lt; plq_function</a></span>
+
+      </td>
+      <td width="40%" class="center">
+      	<span class="top"><a href="section_0f3ad76c2c3a02c3ad79b8b18f6e5928.html">plq</a></span>
+
+      </td>
+      <td width="30%" class="next">
+      	<span class="next"><a href="plq_gph.html">plq_gph &gt;&gt;</a></span>
+
+      </td>
+    </tr></table>
+      <hr />
+    </div>
+
+
+
+    <span class="path"><a href="index.html">CCA (Computational Convex Analysis)</a> &gt;&gt; <a href="section_0f3ad76c2c3a02c3ad79b8b18f6e5928.html">plq</a> &gt; plq_gpa</span>
+
+    <br /><br />
+    <div class="info"></div>
+
+  <div class="refnamediv"><h1 class="refname">plq_gpa</h1>
+    <p class="refpurpose">Piecewise linear quadratic (plq), generalized proximal average</p></div>
+
+   <div class="refsynopsisdiv"><h3 class="title">Calling Sequence</h3>
+     <div class="synopsis"><pre><span class="default">pa</span><span class="default"> = </span><span class="functionid">plq_gpa</span><span class="default">(</span><span class="default">p0</span><span class="default">, </span><span class="default">p1</span><span class="default">, </span><span class="default">lambda</span><span class="default">, </span><span class="default">r</span><span class="default">)</span></pre></div></div>
+
+   <div class="refsection"><h3 class="title">Parameters</h3>
+     <dl><dt><span class="term">p0, p1</span>
+         <dd><p class="para">matrices. PLQ functions.</p></dd></dt>
+
+       <dt><span class="term">lambda</span>
+         <dd><p class="para">constant in [0,1].  lambda1 = 1 - lambda.  lambda2 = lambda.</p></dd></dt>
+
+       <dt><span class="term">r</span>
+         <dd><p class="para">positive constant.  Parameter to the Moreau envelope.</p></dd></dt>
+		
+		<dt><span class="term">pa</span>
+         <dd><p class="para">matrix. The non-convex proximal average of two PLQ functions computed via formula given below</p></dd></dt></dl></div>
+
+   <div class="refsection"><h3 class="title">Description</h3>
+
+     <p class="para">Computes the nonconvex proximal average of two (potentially
+       nonconvex) PLQ functions p0 and p1, via the formula
+       
+		<p class="para"><span><img src='./plq_gpa_1.png'/></span></p>
+        <p class="para">where M[k] is the Moreau envelope with smoothing parameter k.</p></p>
+
+     <p class="para">This algorithm runs in O(n + m) time, where n and m are the
+       number of pieces in p0 and p1, respectively.</p></div>
+
+   <div class="refsection"><h3 class="title">Examples</h3>
+     <div class="programlisting"><table border="0" width="100%"><tr><td width="98%"><pre class="scilabcode"><span class="scilabid">p0</span> <span class="scilaboperator">=</span> <span class="scilabopenclose">[</span><span class="scilabnumber">0</span><span class="scilabdefault">,</span><span class="scilabnumber">0</span><span class="scilabdefault">,</span><span class="scilabnumber">0.5</span><span class="scilabdefault">,</span><span class="scilaboperator">-</span><span class="scilabnumber">1</span><span class="scilabdefault">;</span> <span class="scilabconstants">inf</span><span class="scilabdefault">,</span><span class="scilabnumber">0</span><span class="scilabdefault">,</span><span class="scilaboperator">-</span><span class="scilabnumber">0.5</span><span class="scilabdefault">,</span><span class="scilaboperator">-</span><span class="scilabnumber">1</span><span class="scilabopenclose">]</span><span class="scilabdefault">;</span>
+<span class="scilabid">p1</span> <span class="scilaboperator">=</span> <span class="scilabopenclose">[</span><span class="scilabconstants">inf</span><span class="scilabdefault">,</span><span class="scilabnumber">0.25</span><span class="scilabdefault">,</span><span class="scilabnumber">0</span><span class="scilabdefault">,</span><span class="scilabnumber">0</span><span class="scilabopenclose">]</span><span class="scilabdefault">;</span>
+<span class="scilabid">pa</span> <span class="scilaboperator">=</span> <span class="scilabid">plq_gpa</span><span class="scilabopenclose">(</span><span class="scilabid">p0</span><span class="scilabdefault">,</span><span class="scilabid">p1</span><span class="scilabdefault">,</span><span class="scilabnumber">0.5</span><span class="scilabdefault">,</span><span class="scilabnumber">1</span><span class="scilabopenclose">)</span><span class="scilabdefault">,</span>
+ <span class="scilabid">plq_plotMultiple</span><span class="scilabopenclose">(</span><span class="scilaboperator">-</span><span class="scilabnumber">5</span><span class="scilabdefault">,</span> <span class="scilabnumber">5</span><span class="scilabdefault">,</span> <span class="scilabid">p0</span><span class="scilabdefault">,</span> <span class="scilabid">p1</span><span class="scilabdefault">,</span> <span class="scilabid">pa</span><span class="scilabopenclose">)</span><span class="scilabdefault">;</span></pre></td><td></td></tr></table></div></div>
+
+   <div class="refsection"><h3 class="title">See Also</h3>
+     <ul class="itemizedlist"><li class="member"><a href="plq_function.html" class="link">plq_function</a></li>
+       <li class="member"><a href="plq_pa.html" class="link">plq_pa</a></li></ul></div>
+
+   <div class="refsection"><h3 class="title">Authors</h3>
+     <p class="para"><code class="literal">Bryan Gardiner</code>, University of British Columbia, BC, Canada</p></div>
+
+   <div class="refsection"><h3 class="title">Bibliography</h3>
+     <ul class="itemizedlist"><li>W. L. Hare, 2009, The Proximal Average of Nonconvex Functions: A Proximal Stability Perspective, SIAM Journal on Optimization, 20(2), pp.650-666.</li></ul></div>
+      <div class="manualnavbar">
+          <table width="100%">
+<tr>
+      <td width="30%">
+    	<span class="previous"><a href="plq_function.html">&lt;&lt; plq_function</a></span>
+
+      </td>
+      <td width="40%" class="center">
+      	<span class="top"><a href="section_0f3ad76c2c3a02c3ad79b8b18f6e5928.html">plq</a></span>
+
+      </td>
+      <td width="30%" class="next">
+      	<span class="next"><a href="plq_gph.html">plq_gph &gt;&gt;</a></span>
+
+      </td>
+    </tr></table>
+      <hr />
+    </div>
+  </body>
+</html>

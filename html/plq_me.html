@@ -1,0 +1,108 @@
+﻿<html><head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>plq_me</title>
+    <style type="text/css" media="all">
+      @import url("xml_code.css");
+      @import url("c_code.css");
+      @import url("style.css");
+    </style>
+  </head>
+  <body>
+    <div class="manualnavbar">
+    <table width="100%"><tr>
+      <td width="30%">
+    	<span class="previous"><a href="plq_max.html">&lt;&lt; plq_max</a></span>
+
+      </td>
+      <td width="40%" class="center">
+      	<span class="top"><a href="section_0f3ad76c2c3a02c3ad79b8b18f6e5928.html">plq</a></span>
+
+      </td>
+      <td width="30%" class="next">
+      	<span class="next"><a href="plq_me_max_scale.html">plq_me_max_scale &gt;&gt;</a></span>
+
+      </td>
+    </tr></table>
+      <hr />
+    </div>
+
+
+
+    <span class="path"><a href="index.html">CCA (Computational Convex Analysis)</a> &gt;&gt; <a href="section_0f3ad76c2c3a02c3ad79b8b18f6e5928.html">plq</a> &gt; plq_me</span>
+
+    <br /><br />
+    <div class="info"></div><div class="refnamediv"><h1 class="refname">plq_me</h1><p class="refpurpose">Piecewise linear quadratic (plq), Moreau envelope</p></div>
+  
+   
+  
+   
+  
+   
+  
+   
+  
+   
+
+  
+   <div class="refsynopsisdiv"><h3 class="title">Calling Sequence</h3><div class="synopsis"><pre><span class="default">plqme</span><span class="default"> = </span><span class="functionid">plq_me</span><span class="default">(</span><span class="default">plqf</span><span class="default">,</span><span class="default">lambda</span><span class="default">,</span><span class="default">isConvex</span><span class="default">)</span></pre></div></div>
+
+  
+   <div class="refsection"><h3 class="title">Parameters</h3>
+	  
+      <dl><dt><span class="term">plqf</span>
+			  
+            <dd><p class="para">matrix. A plq function with dimensions n x 4.</p></dd></dt>
+		  
+         <dt><span class="term">lambda</span>
+			  
+            <dd><p class="para">constant, positive smoothing parameter.</p></dd></dt>
+		 
+		 <dt><span class="term">isConvex</span>
+			  
+            <dd><p class="para">t or f, weather plqf is convex or non-convex.</p></dd></dt>
+		  
+         <dt><span class="term">plqme</span>
+			  
+            <dd><p class="para">matrix. A plq function with dimensions n x 4.</p></dd></dt></dl></div>
+ 
+  
+   <div class="refsection"><h3 class="title">Description</h3>
+     
+         <p class="para">Compute the Moreau envelope (ME) transform of a convex plq function, where the input and output is given in the form of a plq matrix. The Moreau Envelope is computed using the formula:
+		<p class="para"><span><img src='./plq_me_1.png'/></span></p></p></div>
+
+  
+   <div class="refsection"><h3 class="title">Examples</h3><div class="programlisting"><table border="0" width="100%"><tr><td width="98%"><pre class="scilabcode"><span class="scilabid">lambda</span><span class="scilaboperator">=</span><span class="scilabnumber">1</span><span class="scilabdefault">;</span>
+<span class="scilabid">fctn</span> <span class="scilaboperator">=</span> <span class="scilabopenclose">[</span><span class="scilabconstants">inf</span><span class="scilabdefault">,</span><span class="scilabnumber">1</span><span class="scilaboperator">/</span><span class="scilabnumber">2</span><span class="scilabdefault">,</span><span class="scilabnumber">0</span><span class="scilabdefault">,</span><span class="scilabnumber">0</span><span class="scilabopenclose">]</span><span class="scilabdefault">;</span>
+<span class="scilabid">result</span> <span class="scilaboperator">=</span> <span class="scilabid">plq_me</span><span class="scilabopenclose">(</span><span class="scilabid">fctn</span><span class="scilabdefault">,</span><span class="scilabid">lambda</span><span class="scilabopenclose">)</span><span class="scilabdefault">;</span></pre></td><td></td></tr></table></div></div>
+
+
+   <div class="refsection"><h3 class="title">See Also</h3><ul class="itemizedlist"><li class="member"><a href="plq_function.html" class="link">plq_function</a></li></ul></div>
+
+  
+   <div class="refsection"><h3 class="title">Authors</h3><p class="para"><code class="literal">Mike Trienis</code>, University of British Columbia, BC, Canada</p></div>
+
+  
+   <div class="refsection"><h3 class="title">Used Functions</h3>
+     
+      <p class="para"><a href="plq_me_max_scale.html" class="link">plq_me_max_scale</a> is called when nonconvexity conditions apply.</p></div>
+      <div class="manualnavbar">
+          <table width="100%">
+<tr>
+      <td width="30%">
+    	<span class="previous"><a href="plq_max.html">&lt;&lt; plq_max</a></span>
+
+      </td>
+      <td width="40%" class="center">
+      	<span class="top"><a href="section_0f3ad76c2c3a02c3ad79b8b18f6e5928.html">plq</a></span>
+
+      </td>
+      <td width="30%" class="next">
+      	<span class="next"><a href="plq_me_max_scale.html">plq_me_max_scale &gt;&gt;</a></span>
+
+      </td>
+    </tr></table>
+      <hr />
+    </div>
+  </body>
+</html>

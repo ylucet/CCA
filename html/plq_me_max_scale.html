@@ -1,0 +1,98 @@
+﻿<html><head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>plq_me_max_scale</title>
+    <style type="text/css" media="all">
+      @import url("xml_code.css");
+      @import url("c_code.css");
+      @import url("style.css");
+    </style>
+  </head>
+  <body>
+    <div class="manualnavbar">
+    <table width="100%"><tr>
+      <td width="30%">
+    	<span class="previous"><a href="plq_me.html">&lt;&lt; plq_me</a></span>
+
+      </td>
+      <td width="40%" class="center">
+      	<span class="top"><a href="section_0f3ad76c2c3a02c3ad79b8b18f6e5928.html">plq</a></span>
+
+      </td>
+      <td width="30%" class="next">
+      	<span class="next"><a href="plq_min.html">plq_min &gt;&gt;</a></span>
+
+      </td>
+    </tr></table>
+      <hr />
+    </div>
+
+
+
+    <span class="path"><a href="index.html">CCA (Computational Convex Analysis)</a> &gt;&gt; <a href="section_0f3ad76c2c3a02c3ad79b8b18f6e5928.html">plq</a> &gt; plq_me_max_scale</span>
+
+    <br /><br />
+    <div class="info"></div><div class="refnamediv"><h1 class="refname">plq_me_max_scale</h1><p class="refpurpose">Piecewise linear quadratic (plq), Maximum scale for Moreau envelope</p></div>
+  
+   
+  
+   
+  
+   
+  
+   
+  
+   
+
+  
+   <div class="refsynopsisdiv"><h3 class="title">Calling Sequence</h3><div class="synopsis"><pre><span class="default">scale</span><span class="default"> = </span><span class="functionid">plq_me_max_scale</span><span class="default">(</span><span class="default">plqf1</span><span class="default">, ..., </span><span class="default">plqfN</span><span class="default">)</span></pre></div></div>
+
+  
+   <div class="refsection"><h3 class="title">Parameters</h3>
+    
+      <dl><dt><span class="term">plqf1 ... plqfN</span>
+        
+            <dd><p class="para">matrices. PLQ functions for which to compute the maximum scale.</p></dd></dt>
+      
+         <dt><span class="term">scale</span>
+        
+            <dd><p class="para">constant. The maximum smoothing parameter that plq_me will accept over all the given functions.</p></dd></dt></dl></div>
+  
+  
+   <div class="refsection"><h3 class="title">Description</h3>
+      
+         <p class="para">This function computes the maximum smoothing parameter that may be passed as &#0034;lambda&#0034; or &#0034;mu&#0034; into <a href="plq_me.html" class="link">plq_me</a> such that a set of nonconvex functions have finite Moreau envelopes.  Otherwise, if the smoothing parameter is too high, g* below will be infinite everywhere because a convex hull cannot be computed. The Moreau envelope formula is
+        
+			<p class="para"><span><img src='./plq_me_max_scale_1.png'/></span></p></p></div>
+
+  
+   <div class="refsection"><h3 class="title">Examples</h3><div class="programlisting"><table border="0" width="100%"><tr><td width="98%"><pre class="scilabcode"><span class="scilabid">f1</span> <span class="scilaboperator">=</span> <span class="scilabopenclose">[</span><span class="scilabnumber">0</span><span class="scilabdefault">,</span><span class="scilaboperator">-</span><span class="scilabnumber">1</span><span class="scilabdefault">,</span><span class="scilabnumber">0</span><span class="scilabdefault">,</span><span class="scilabnumber">0</span><span class="scilabdefault">;</span><span class="scilabconstants">inf</span><span class="scilabdefault">,</span><span class="scilaboperator">-</span><span class="scilabnumber">2</span><span class="scilabdefault">,</span><span class="scilabnumber">0</span><span class="scilabdefault">,</span><span class="scilabnumber">0</span><span class="scilabopenclose">]</span><span class="scilabdefault">;</span>
+<span class="scilabid">plq_me_max_scale</span><span class="scilabopenclose">(</span><span class="scilabid">f1</span><span class="scilabopenclose">);</span>          <span class="scilabid">%</span> <span class="scilaboperator">-</span><span class="scilabnumber">1</span><span class="scilaboperator">/</span><span class="scilabnumber">2</span><span class="scilaboperator">/</span><span class="scilabopenclose">(</span><span class="scilaboperator">-</span><span class="scilabnumber">2</span><span class="scilabopenclose">)</span> <span class="scilaboperator">==</span> <span class="scilabnumber">0.25</span>
+<span class="scilabid">f2</span> <span class="scilaboperator">=</span> <span class="scilabopenclose">[</span><span class="scilabnumber">1</span><span class="scilabdefault">,</span><span class="scilabnumber">0</span><span class="scilabdefault">,</span><span class="scilabnumber">1</span><span class="scilabdefault">,</span><span class="scilabnumber">0</span><span class="scilabdefault">;</span><span class="scilabnumber">2</span><span class="scilabdefault">,</span><span class="scilabnumber">0</span><span class="scilabdefault">,</span><span class="scilaboperator">-</span><span class="scilabnumber">1</span><span class="scilabdefault">,</span><span class="scilabnumber">2</span><span class="scilabdefault">;</span><span class="scilabconstants">inf</span><span class="scilabdefault">,</span><span class="scilaboperator">-</span><span class="scilabnumber">3</span><span class="scilabdefault">,</span><span class="scilabnumber">0</span><span class="scilabdefault">,</span><span class="scilabnumber">0</span><span class="scilabopenclose">]</span><span class="scilabdefault">;</span>
+<span class="scilabid">plq_me_max_scale</span><span class="scilabopenclose">(</span><span class="scilabid">f2</span><span class="scilabopenclose">);</span>          <span class="scilabid">%</span> <span class="scilaboperator">-</span><span class="scilabnumber">1</span><span class="scilaboperator">/</span><span class="scilabnumber">2</span><span class="scilaboperator">/</span><span class="scilabopenclose">(</span><span class="scilaboperator">-</span><span class="scilabnumber">3</span><span class="scilabopenclose">)</span> <span class="scilaboperator">==</span> <span class="scilabnumber">0.167</span>
+<span class="scilabid">plq_me_max_scale</span><span class="scilabopenclose">(</span><span class="scilabid">f1</span><span class="scilabdefault">,</span> <span class="scilabid">f2</span><span class="scilabopenclose">)</span><span class="scilabdefault">;</span>      <span class="scilabid">%</span> <span class="scilabnumber">0.167</span></pre></td><td></td></tr></table></div></div>
+
+  
+   <div class="refsection"><h3 class="title">See Also</h3><ul class="itemizedlist"><li class="member"><a href="plq_function.html" class="link">plq_function</a></li></ul></div>
+
+  
+   <div class="refsection"><h3 class="title">Authors</h3><p class="para"><code class="literal">Bryan Gardiner</code>, University of British Columbia, BC, Canada</p></div>
+      <div class="manualnavbar">
+          <table width="100%">
+<tr>
+      <td width="30%">
+    	<span class="previous"><a href="plq_me.html">&lt;&lt; plq_me</a></span>
+
+      </td>
+      <td width="40%" class="center">
+      	<span class="top"><a href="section_0f3ad76c2c3a02c3ad79b8b18f6e5928.html">plq</a></span>
+
+      </td>
+      <td width="30%" class="next">
+      	<span class="next"><a href="plq_min.html">plq_min &gt;&gt;</a></span>
+
+      </td>
+    </tr></table>
+      <hr />
+    </div>
+  </body>
+</html>

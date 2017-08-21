@@ -1,0 +1,105 @@
+﻿<html><head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>gph_me</title>
+    <style type="text/css" media="all">
+      @import url("xml_code.css");
+      @import url("c_code.css");
+      @import url("style.css");
+    </style>
+  </head>
+  <body>
+    <div class="manualnavbar">
+    <table width="100%"><tr>
+      <td width="30%">
+    	<span class="previous"><a href="gph_lft.html">&lt;&lt; gph_lft</a></span>
+
+      </td>
+      <td width="40%" class="center">
+      	<span class="top"><a href="section_076511024e3715b9151c202a48bf3fcf.html">gph</a></span>
+
+      </td>
+      <td width="30%" class="next">
+      	<span class="next"><a href="gph_pa.html">gph_pa &gt;&gt;</a></span>
+
+      </td>
+    </tr></table>
+      <hr />
+    </div>
+
+
+
+    <span class="path"><a href="index.html">CCA (Computational Convex Analysis)</a> &gt;&gt; <a href="section_076511024e3715b9151c202a48bf3fcf.html">gph</a> &gt; gph_me</span>
+
+    <br /><br />
+    <div class="info"></div>
+
+  <div class="refnamediv"><h1 class="refname">gph_me</h1>
+    <p class="refpurpose">Graph-matrix calculus (GPH), Moreau envelope (Moreau-Yoshida approximate)</p></div>
+
+   <div class="refsynopsisdiv"><h3 class="title">Calling Sequence</h3>
+     <div class="synopsis"><pre><span class="default">gphme</span><span class="default"> = </span><span class="functionid">gph_me</span><span class="default">(</span><span class="default">gph</span><span class="default">, </span><span class="default">lambda</span><span class="default">)</span></pre></div></div>
+
+   <div class="refsection"><h3 class="title">Parameters</h3>
+     <dl><dt><span class="term">gph</span>
+         <dd><p class="para">matrix.  A function in GPH matrix form.</p></dd></dt>
+
+       <dt><span class="term">lambda</span>
+         <dd><p class="para">constant.  A positive smoothing parameter.</p></dd></dt>
+
+       <dt><span class="term">gphme</span>
+         <dd><p class="para">matrix.  The Moreau envelope of the function gph, as a GPH matrix.</p></dd></dt></dl></div>
+
+   <div class="refsection"><h3 class="title">Description</h3>
+
+     <p class="para">Computes the Moreau Envelope of a convex PLQ function f, given
+       in GPH matrix form.  The Moreau envelope is defined as
+
+       
+		<p class="para"><span><img src='./gph_me_1.png'/></span></p>
+
+       <p class="para">For a convex PLQ function f with GPH matrix [x;s;y], the GPH
+       matrix of the Moreau envelope with smoothing parameter L &gt; 0 is</p>
+
+       
+		<p class="para"><span><img src='./gph_me_2.png'/></span></p>
+
+       <p class="para">which can be derived from the Moreau envelope formula for
+       convex functions (here * denotes the Legendre-Fenchel
+       conjugate),</p>
+
+       
+		<p class="para"><span><img src='./gph_me_3.png'/></span></p></p></div>
+
+   <div class="refsection"><h3 class="title">Examples</h3>
+     <div class="programlisting"><table border="0" width="100%"><tr><td width="98%"><pre class="scilabcode"><span class="scilabid">gph</span> <span class="scilaboperator">=</span> <span class="scilabopenclose">[</span><span class="scilaboperator">-</span><span class="scilabnumber">1</span><span class="scilabdefault">,</span>  <span class="scilabnumber">0</span><span class="scilabdefault">,</span> <span class="scilabnumber">0</span><span class="scilabdefault">,</span> <span class="scilabnumber">1</span><span class="scilabdefault">,</span> <span class="scilabnumber">2</span><span class="scilabdefault">;</span> <span class="scilabspecial">...</span>
+       <span class="scilaboperator">-</span><span class="scilabnumber">1</span><span class="scilabdefault">,</span> <span class="scilaboperator">-</span><span class="scilabnumber">1</span><span class="scilabdefault">,</span> <span class="scilabnumber">0</span><span class="scilabdefault">,</span> <span class="scilabnumber">0</span><span class="scilabdefault">,</span> <span class="scilabnumber">2</span><span class="scilabdefault">;</span> <span class="scilabspecial">...</span>
+        <span class="scilabnumber">1</span><span class="scilabdefault">,</span>  <span class="scilabnumber">0</span><span class="scilabdefault">,</span> <span class="scilabnumber">0</span><span class="scilabdefault">,</span> <span class="scilabnumber">0</span><span class="scilabdefault">,</span> <span class="scilabnumber">1</span><span class="scilabopenclose">]</span><span class="scilabdefault">;</span>
+<span class="scilabid">lambda</span> <span class="scilaboperator">=</span> <span class="scilabnumber">3</span><span class="scilabdefault">;</span>
+<span class="scilabid">gphme</span> <span class="scilaboperator">=</span> <span class="scilabid">gph_me</span><span class="scilabopenclose">(</span><span class="scilabid">gph</span><span class="scilabdefault">,</span> <span class="scilabid">lambda</span><span class="scilabopenclose">)</span><span class="scilabdefault">;</span>
+<span class="scilabid">gph_plot</span><span class="scilabopenclose">(</span><span class="scilabid">gph</span><span class="scilabdefault">,</span> <span class="scilabid">gphme</span><span class="scilabopenclose">)</span><span class="scilabdefault">;</span></pre></td></tr></table></div></div>
+
+   <div class="refsection"><h3 class="title">See Also</h3>
+     <ul class="itemizedlist"><li class="member"><a href="gph_function.html" class="link">gph_function</a></li></ul></div>
+
+   <div class="refsection"><h3 class="title">Authors</h3>
+     <p class="para"><code class="literal">Bryan Gardiner</code>, University of British Columbia, BC, Canada</p></div>
+      <div class="manualnavbar">
+          <table width="100%">
+<tr>
+      <td width="30%">
+    	<span class="previous"><a href="gph_lft.html">&lt;&lt; gph_lft</a></span>
+
+      </td>
+      <td width="40%" class="center">
+      	<span class="top"><a href="section_076511024e3715b9151c202a48bf3fcf.html">gph</a></span>
+
+      </td>
+      <td width="30%" class="next">
+      	<span class="next"><a href="gph_pa.html">gph_pa &gt;&gt;</a></span>
+
+      </td>
+    </tr></table>
+      <hr />
+    </div>
+  </body>
+</html>

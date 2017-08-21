@@ -1,0 +1,104 @@
+﻿<html><head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>plq_check</title>
+    <style type="text/css" media="all">
+      @import url("xml_code.css");
+      @import url("c_code.css");
+      @import url("style.css");
+    </style>
+  </head>
+  <body>
+    <div class="manualnavbar">
+    <table width="100%"><tr>
+      <td width="30%">
+    	<span class="previous"><a href="plq_build.html">&lt;&lt; plq_build</a></span>
+
+      </td>
+      <td width="40%" class="center">
+      	<span class="top"><a href="section_0f3ad76c2c3a02c3ad79b8b18f6e5928.html">plq</a></span>
+
+      </td>
+      <td width="30%" class="next">
+      	<span class="next"><a href="plq_clean.html">plq_clean &gt;&gt;</a></span>
+
+      </td>
+    </tr></table>
+      <hr />
+    </div>
+
+
+
+    <span class="path"><a href="index.html">CCA (Computational Convex Analysis)</a> &gt;&gt; <a href="section_0f3ad76c2c3a02c3ad79b8b18f6e5928.html">plq</a> &gt; plq_check</span>
+
+    <br /><br />
+    <div class="info"></div>
+
+  <div class="refnamediv"><h1 class="refname">plq_check</h1>
+    <p class="refpurpose">Piecewise linear quadratic (plq), Consistency check</p></div>
+
+   <div class="refsynopsisdiv"><h3 class="title">Calling Sequence</h3>
+     <div class="synopsis"><pre><span class="default">[</span><span class="default">b</span><span class="default">, </span><span class="default">er</span><span class="default">] = </span><span class="functionid">plq_check</span><span class="default">(</span><span class="default">plqf</span><span class="default">, </span><span class="default">ind</span><span class="default">)</span></pre></div></div>
+
+   <div class="refsection"><h3 class="title">Parameters</h3>
+     <dl><dt><span class="term">plqf</span>
+         <dd><p class="para">matrix. A plq function.</p></dd></dt>
+
+       <dt><span class="term">ind</span>
+         <dd><p class="para">optional integer.  Which tests to perform on plqf.</p></dd></dt>
+
+       <dt><span class="term">b</span>
+         <dd><p class="para">boolean.  True if and only if plqf is a valid PLQ function.</p></dd></dt>
+
+       <dt><span class="term">er</span>
+         <dd><p class="para">real number.  The maximum error found in the last test run.</p></dd></dt></dl></div>
+
+   <div class="refsection"><h3 class="title">Description</h3>
+
+     <p class="para">Performs a number of sanity checks on the PLQ function plqf.  If all of
+       the tests pass, true is returned, otherwise false is returned.</p>
+
+     <p class="para">Test 1 tests that the plqf&#0039;s x values (first column) are increasing.
+       Test 2 checks that plqf is continuous.  By default, both tests are
+       performed.  The optional index argument can specify an individual test,
+       or vector of tests, to run.</p>
+
+     <p class="para">If test 1 fails, then er is the largest decrease in x value between two
+       consecutive pieces.  If test 2 fails, then er is the maximum absolute
+       difference between the values of two consecutive pieces at their meeting
+       point.</p></div>
+
+   <div class="refsection"><h3 class="title">Examples</h3>
+     <div class="programlisting"><table border="0" width="100%"><tr><td width="98%"><pre class="scilabcode"><span class="scilabid">plqf</span> <span class="scilaboperator">=</span> <span class="scilabopenclose">[</span><span class="scilaboperator">-</span><span class="scilabnumber">1</span> <span class="scilabnumber">0</span> <span class="scilabnumber">0</span> <span class="scilabconstants">inf</span><span class="scilabdefault">;</span> <span class="scilabnumber">0</span> <span class="scilabnumber">0</span> <span class="scilabnumber">0</span> <span class="scilabnumber">0</span><span class="scilabdefault">;</span> <span class="scilabnumber">1</span> <span class="scilabnumber">0</span> <span class="scilabnumber">0</span> <span class="scilabnumber">1</span><span class="scilabdefault">;</span> <span class="scilabconstants">inf</span> <span class="scilabnumber">0</span> <span class="scilabnumber">0</span> <span class="scilabconstants">inf</span><span class="scilabopenclose">]</span><span class="scilabdefault">;</span>
+<span class="scilabid">plq_check</span><span class="scilabopenclose">(</span><span class="scilabid">plqf</span><span class="scilabopenclose">)</span><span class="scilabdefault">,</span>    %<span class="scilabcomment"> False - discontinuous.</span>
+
+<span class="scilabid">plqf</span> <span class="scilaboperator">=</span> <span class="scilabopenclose">[</span><span class="scilaboperator">-</span><span class="scilabnumber">1</span> <span class="scilabnumber">0</span> <span class="scilabnumber">0</span> <span class="scilabconstants">inf</span><span class="scilabdefault">;</span> <span class="scilabnumber">0</span> <span class="scilabnumber">0</span> <span class="scilabnumber">0</span> <span class="scilabnumber">0</span><span class="scilabdefault">;</span> <span class="scilaboperator">-</span><span class="scilabnumber">0.5</span> <span class="scilabnumber">0</span> <span class="scilabnumber">0</span> <span class="scilabnumber">0</span><span class="scilabdefault">;</span> <span class="scilabconstants">inf</span> <span class="scilabnumber">0</span> <span class="scilabnumber">0</span> <span class="scilabconstants">inf</span><span class="scilabopenclose">]</span><span class="scilabdefault">;</span>
+<span class="scilabid">plq_check</span><span class="scilabopenclose">(</span><span class="scilabid">plqf</span><span class="scilabopenclose">)</span><span class="scilabdefault">,</span>    <span class="scilabcomment">% False - X not increasing.</span>
+
+<span class="scilabid">plqf</span> <span class="scilaboperator">=</span> <span class="scilabopenclose">[</span><span class="scilabnumber">0</span> <span class="scilabnumber">0</span> <span class="scilaboperator">-</span><span class="scilabnumber">1</span> <span class="scilabnumber">0</span><span class="scilabdefault">;</span> <span class="scilabconstants">inf</span> <span class="scilabnumber">0</span> <span class="scilabnumber">1</span> <span class="scilabnumber">0</span><span class="scilabopenclose">]</span><span class="scilabdefault">;</span>
+<span class="scilabid">plq_check</span><span class="scilabopenclose">(</span><span class="scilabid">plqf</span><span class="scilabopenclose">)</span><span class="scilabdefault">,</span>    <span class="scilabcomment">% True.</span></pre></td></tr></table></div></div>
+
+   <div class="refsection"><h3 class="title">See Also</h3>
+     <ul class="itemizedlist"><li class="member"><a href="plq_function.html" class="link">plq_function</a></li></ul></div>
+
+   <div class="refsection"><h3 class="title">Authors</h3>
+     <p class="para"><code class="literal">Bryan Gardiner</code>, University of British Columbia, BC, Canada</p></div>
+      <div class="manualnavbar">
+          <table width="100%">
+<tr>
+      <td width="30%">
+    	<span class="previous"><a href="plq_build.html">&lt;&lt; plq_build</a></span>
+
+      </td>
+      <td width="40%" class="center">
+      	<span class="top"><a href="section_0f3ad76c2c3a02c3ad79b8b18f6e5928.html">plq</a></span>
+
+      </td>
+      <td width="30%" class="next">
+      	<span class="next"><a href="plq_clean.html">plq_clean &gt;&gt;</a></span>
+
+      </td>
+    </tr></table>
+      <hr />
+    </div>
+  </body>
+</html>

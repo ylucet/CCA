@@ -1,0 +1,176 @@
+﻿<html><head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>CCA</title>
+    <style type="text/css" media="all">
+      @import url("xml_code.css");
+      @import url("c_code.css");
+      @import url("style.css");
+    </style>
+  </head>
+  <body>
+    <div class="manualnavbar">
+    <table width="100%"><tr>
+      <td width="30%">
+    	<span class="previous"><a href="section_5a6f4f901886f8768a346fa99bf23920.html">&lt;&lt; miscellaneous</a></span>
+
+      </td>
+      <td width="40%" class="center">
+      	<span class="top"><a href="section_5a6f4f901886f8768a346fa99bf23920.html">miscellaneous</a></span>
+
+      </td>
+      <td width="30%" class="next">
+      	<span class="next"><a href="common_version.html">common_version &gt;&gt;</a></span>
+
+      </td>
+    </tr></table>
+      <hr />
+    </div>
+
+
+
+    <span class="path"><a href="index.html">CCA (Computational Convex Analysis)</a> &gt;&gt; <a href="section_5a6f4f901886f8768a346fa99bf23920.html">miscellaneous</a> &gt; CCA</span>
+
+    <br /><br />
+    <div class="info"></div><div class="refnamediv"><h1 class="refname">CCA</h1><p class="refpurpose">Computational Convex Analysis toolbox description</p></div>
+  
+   
+  
+   
+  
+   
+  
+   
+  
+   
+
+  
+   <div class="refsection"><h3 class="title">Description</h3>
+	
+      <p class="para">The CCA package contains numerical algorithms to compute several fundamental transforms of convex analysis for convex and nonconvex functions. Most of its algorithms take a function as input, either as evaluated on a grid or given as a black box, and return the evaluation of the transform on a grid.</p>
+
+        <p class="para">Many exact transforms work with piecewise linear-quadratic functions and their subdifferentials, and visualizing these models is easy.  See the main pages for <a href="plq_function.html" class="link">PLQ functions</a> and their <a href="gph_function.html" class="link">subdifferentials</a>.</p>
+	
+      <p class="para">The transforms currently implemented are:</p>
+	
+      <ul class="itemizedlist"><li><dl><dt><span class="term">lft</span><dd><p class="para">The <code class="literal">Legendre-Fenchel transform</code> (also called Legendre-Fenchel conjugate, Fenchel conjugate, or convex conjugate): 
+					
+					<p class="para"><span><img src='./about_CCA_1.png'/></span></p></p>
+
+                  <p class="para">The notation 
+
+						<p class="para"><span><img src='./about_CCA_2.png'/></span></p>				  
+				  
+				  <p class="para">denotes the standard scalar product. Several linear-time algorithms are implemented (functions with names lft_*).</p></p></dd></dt>
+
+			
+               <dt><span class="term">me</span><dd><p class="para">The <code class="literal">Moreau envelope</code> (also called Moreau-Yosida approximate):
+					
+						<p class="para"><span><img src='./about_CCA_3.png'/></span></p></p>
+				
+                  <p class="para">The notation 
+					<p class="para"><span><img src='./about_CCA_4.png'/></span></p>
+					<p class="para">denotes the Euclidean norm. Several linear-time algorithms are implemented (functions with names me_*).</p>
+          <dd></dd></dt>
+
+            
+               <dt><span class="term">pa</span><dd><p class="para">The <code class="literal">proximal average</code> transforms one convex function into another continuously:
+                
+					<p class="para"><span><img src='./about_CCA_5.png'/></span></p>
+                <p class="para">where</p> 
+					<p class="para"><span><img src='./about_CCA_6.png'/></span></p>
+				<p class="para">is the Fenchel conjugate above.</p></p>
+              
+                  <p class="para">This transform works even if the functions have only partially overlapping or completely disjoint domains.  This algorithm, part of the PLQ framework, runs in O(N(f1) + N(f2)) time, where N(f) is the number of pieces in the PLQ function f.</p></dd></dt>
+
+            
+               <dt><span class="term">fitz</span><dd><p class="para">The <code class="literal">Fitzpatrick function</code> of a finite operator A defined on the real line (functions with names op_fitz* and plq_fitz*):
+                
+					<p class="para"><span><img src='./about_CCA_7.png'/></span></p>
+                <p class="para">The most efficient general algorithm implemented runs in worst-case cubic time.  Other algorithms with fixed parameters are implemented that further reduce the time complexity.</p></p></dd></dt>
+
+            
+               <dt><span class="term">rock</span><dd><p class="para">The <code class="literal">Rockafellar function</code> of a real, finite operator A:
+					<p class="para"><span><img src='./about_CCA_8.png'/></span></p>
+                
+                <p class="para">This algorithm uses PLQ functions to achieve a worst-case linear time complexity.</p></p></dd></dt></dl></li></ul></div>
+
+  
+   <div class="refsection"><h3 class="title">See Also</h3><ul class="itemizedlist">
+
+    
+      <li class="member">Fitzpatrick/Rockafellar algorithms:</li>
+    
+      <li class="member"><a href="op_fitz.html" class="link">op_fitz</a></li>
+    
+      <li class="member"><a href="op_fitzinf.html" class="link">op_fitzinf</a></li>
+    
+      <li class="member"><a href="plq_fitzinf0.html" class="link">plq_fitzinf0</a></li>
+    
+      <li class="member"><a href="plq_rock.html" class="link">plq_rock</a></li>
+	
+	
+      <li class="member">Functions provided for comparison only:</li>
+	
+      <li class="member"><a href="op_fitz_brute.html" class="link">op_fitz_brute</a></li>
+    
+      <li class="member"><a href="op_fitz_direct.html" class="link">op_fitz_direct</a></li>
+    
+      <li class="member"><a href="plq_fitzinf0_direct.html" class="link">plq_fitzinf0_direct</a></li></ul></div>
+
+  
+   <div class="refsection"><h3 class="title">Authors</h3><p class="para"><code class="literal">Yves Lucet</code>, University of British Columbia, BC, Canada</p></div>
+
+  
+   <div class="refsection"><h3 class="title">Contributors</h3>
+     
+      <ul class="itemizedlist"><li class="member">Yves Lucet (PI, 1996-)</li>
+        <li class="member">Bryan Gardiner (Research Assistant 2008-)</li>
+        <li class="member">Scott Fazackerley (USRA 2007, Honours student 2007-08)</li>
+        <li class="member">Michael Trienis (M.Sc. student 2006-2007)</li>
+        <li class="member">Jeff Dicker (USRA student 2005)</li>
+        <li class="member">Andrew Tonner (Research Assistant 2005)</li></ul></div>
+
+  
+   <div class="refsection"><h3 class="title">Bibliography</h3>
+		
+         <ul class="itemizedlist"><li>B. Gardiner, Y. Lucet, Submitted February 2010, Convex Hull Algorithms for Piecewise Linear-Quadratic Functions in Computational Convex Analysis.</li>
+
+            <li>B. Gardiner, Y. Lucet, Submitted January 2010, Graph-Matrix Calculus for Computational Convex Analysis.</li>
+
+            <li>B. Gardiner, Y. Lucet, 2009, Numerical Computation of Fitzpatrick Functions, Journal of Convex Analysis, 16(4).</li>
+        
+            <li>H. H. Bauschke, Y. Lucet, and M. Trienis, 2008, How To Transform One Convex Function Continuously Into Another, 50(1):115-132.</li>
+
+            <li>F. P. Preparata and M. I. Shamos, Computational Geometry An Introduction, Series: Monographs in Computer Science, 1st ed. 1985. Corr. 5th printing 1993.</li>
+        
+            <li>Y. Lucet, H. H. Bauschke, and M. Trienis, 2007, The Piecewise Linear-Quadratic Model for Computational Convex Analysis, Computational Optimization and Applications.</li>
+		
+            <li>Y. Lucet, 2006, Fast Moreau Envelope Computation I: Numerical Algorithms, Numerical Algorithms, 43(3):235-249.</li>
+		
+            <li>Y. Lucet, 2005, A linear Euclidean distance transform algorithm based on the Linear-time Legendre Transform, Proceedings of the Second Canadian Conference on Computer and Robot Vision (CRV 2005), IEEE Computer Society Press, 2005.</li>
+		
+            <li>Y. Lucet, 1997, Faster than the fast Legendre transform, the linear-time Legendre transform, Numerical Algorithms, 16(2):171-185. Code in Netlib.</li>
+		
+            <li>Y. Lucet, 1996, A fast computational algorithm for the Legendre-Fenchel transform, Computational Optimization and Applications, 6(1):27-57.</li>
+
+            <li>W. L. Hare, 2009, The Proximal Average of Nonconvex Functions: A Proximal Stability Perspective, SIAM Journal on Optimization, 20(2), pp.650-666.</li></ul></div>
+      <div class="manualnavbar">
+          <table width="100%">
+<tr>
+      <td width="30%">
+    	<span class="previous"><a href="section_5a6f4f901886f8768a346fa99bf23920.html">&lt;&lt; miscellaneous</a></span>
+
+      </td>
+      <td width="40%" class="center">
+      	<span class="top"><a href="section_5a6f4f901886f8768a346fa99bf23920.html">miscellaneous</a></span>
+
+      </td>
+      <td width="30%" class="next">
+      	<span class="next"><a href="common_version.html">common_version &gt;&gt;</a></span>
+
+      </td>
+    </tr></table>
+      <hr />
+    </div>
+  </body>
+</html>

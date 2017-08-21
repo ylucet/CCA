@@ -1,0 +1,105 @@
+﻿<html><head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>plq_plotpa_muSet</title>
+    <style type="text/css" media="all">
+      @import url("xml_code.css");
+      @import url("c_code.css");
+      @import url("style.css");
+    </style>
+  </head>
+  <body>
+    <div class="manualnavbar">
+    <table width="100%"><tr>
+      <td width="30%">
+    	<span class="previous"><a href="plq_plotpa_lambdaSet.html">&lt;&lt; plq_plotpa_lambdaSet</a></span>
+
+      </td>
+      <td width="40%" class="center">
+      	<span class="top"><a href="section_0f3ad76c2c3a02c3ad79b8b18f6e5928.html">plq</a></span>
+
+      </td>
+      <td width="30%" class="next">
+      	<span class="next"><a href="plq_proj.html">plq_proj &gt;&gt;</a></span>
+
+      </td>
+    </tr></table>
+      <hr />
+    </div>
+
+
+
+    <span class="path"><a href="index.html">CCA (Computational Convex Analysis)</a> &gt;&gt; <a href="section_0f3ad76c2c3a02c3ad79b8b18f6e5928.html">plq</a> &gt; plq_plotpa_muSet</span>
+
+    <br /><br />
+    <div class="info"></div><div class="refnamediv"><h1 class="refname">plq_plotpa_muSet</h1><p class="refpurpose">Piecewise linear quadratic (plq), plot nonconvex proximal average over the smoothing parameter mu</p></div>
+  
+   
+  
+   
+  
+   
+  
+   
+  
+   
+
+  
+   <div class="refsynopsisdiv"><h3 class="title">Calling Sequence</h3><div class="synopsis"><pre><span class="functionid">plq_plotpa_muSet</span><span class="default">(</span><span class="default">f1</span><span class="default">, </span><span class="default">f2</span><span class="default">, </span><span class="default">x</span><span class="default">, </span><span class="default">lambda</span><span class="default">, </span><span class="default">muSet</span><span class="default">, </span><span class="default">rect</span><span class="default">)</span></pre></div></div>
+
+  
+   <div class="refsection"><h3 class="title">Parameters</h3>
+    
+      <dl><dt><span class="term">f1</span>
+        
+            <dd><p class="para">matrix.  The first plq function of the proximal average (lambda=0).</p></dd></dt>
+      
+         <dt><span class="term">f2</span>
+        
+            <dd><p class="para">matrix.  The second plq function of the proximal average (lambda=1).</p></dd></dt>
+      
+         <dt><span class="term">x</span>
+        
+            <dd><p class="para">column vector.  The points at which to evaluate the proximal average.</p></dd></dt>
+      
+         <dt><span class="term">lambda</span>
+        
+            <dd><p class="para">constant.  The weight to apply to f2 in the average.  f1&#0039;s weight is (1-lambda).</p></dd></dt>
+      
+         <dt><span class="term">muSet</span>
+        
+            <dd><p class="para">column vector.  The mu values at which to plot the proximal average.</p></dd></dt>
+      
+         <dt><span class="term">rect</span>
+        
+            <dd><p class="para">row vector.  [xmin,ymin,xmax,ymax] for the plot window as with plot2d.</p></dd></dt></dl></div>
+
+  
+   <div class="refsection"><h3 class="title">Description</h3>
+      
+         <p class="para">For each mu in muSet, plots the proximal average of two PLQ functions over the provided x values and with the provided lambda.  The proximal averages are computed with plq_pa_mu, so f1 and f2 do not have to be convex.  The rect argument bounds the plot&#0039;s visible region and is required.  All of the proximal averages are plotted on the same graph, and the colours of successive PA&#0039;s fade from blue (lambda=0) to red (lambda=1) via jetcolormap.</p></div>
+
+  
+   <div class="refsection"><h3 class="title">See Also</h3><ul class="itemizedlist"><li class="member"><a href="plq_function.html" class="link">plq_function</a></li></ul></div>
+
+  
+   <div class="refsection"><h3 class="title">Authors</h3><p class="para"><code class="literal">Bryan Gardiner</code>, University of British Columbia, BC, Canada</p></div>
+      <div class="manualnavbar">
+          <table width="100%">
+<tr>
+      <td width="30%">
+    	<span class="previous"><a href="plq_plotpa_lambdaSet.html">&lt;&lt; plq_plotpa_lambdaSet</a></span>
+
+      </td>
+      <td width="40%" class="center">
+      	<span class="top"><a href="section_0f3ad76c2c3a02c3ad79b8b18f6e5928.html">plq</a></span>
+
+      </td>
+      <td width="30%" class="next">
+      	<span class="next"><a href="plq_proj.html">plq_proj &gt;&gt;</a></span>
+
+      </td>
+    </tr></table>
+      <hr />
+    </div>
+  </body>
+</html>
