@@ -1,0 +1,133 @@
+﻿<html><head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>gph_function</title>
+    <style type="text/css" media="all">
+      @import url("xml_code.css");
+      @import url("c_code.css");
+      @import url("style.css");
+    </style>
+  </head>
+  <body>
+    <div class="manualnavbar">
+    <table width="100%"><tr>
+      <td width="30%">
+    	<span class="previous"><a href="gph_eval.html">&lt;&lt; gph_eval</a></span>
+
+      </td>
+      <td width="40%" class="center">
+      	<span class="top"><a href="section_076511024e3715b9151c202a48bf3fcf.html">gph</a></span>
+
+      </td>
+      <td width="30%" class="next">
+      	<span class="next"><a href="gph_isBounded.html">gph_isBounded &gt;&gt;</a></span>
+
+      </td>
+    </tr></table>
+      <hr />
+    </div>
+
+
+
+    <span class="path"><a href="index.html">CCA (Computational Convex Analysis)</a> &gt;&gt; <a href="section_076511024e3715b9151c202a48bf3fcf.html">gph</a> &gt; gph_function</span>
+
+    <br /><br />
+    <div class="info"></div>
+
+  <div class="refnamediv"><h1 class="refname">gph_function</h1>
+    <p class="refpurpose">Graph-matrix calculus (GPH), Function model</p></div>
+
+   <div class="refsection"><h3 class="title">Description</h3>
+
+     <p class="para">A continuous, convex, possibly nonsmooth, PLQ function can be encoded in a &#0034;GPH matrix&#0034; as follows:
+
+       
+			<p class="para"><span><img src='./gph_function_1.png'/></span></p></p>
+
+     <p class="para">This is a useful representation because the subdifferentials of
+       functions under many convex transforms can be computed by a
+       matrix multiplication with the graph of the subdifferential of
+       the original function.  The above matrix stores the graph of
+       the subdifferential.</p>
+
+     <p class="para">The subdifferential of a PLQ function f is a piecewise affine
+       function, with potentially vertical regions where f is
+       nonsmooth.  Hence the matrix merely needs to store the vertices
+       in the subdifferential, that are necessary to recover the
+       entire graph using piecewise linear interpolation.  Breakpoints
+       in the domain of f will be x values in gph, but the converse is
+       not necessarily true: redundant points may be stored in the
+       matrix, as will often be the case after performing a convex
+       transform.  Uniqueness of representation is not guaranteed, as
+       it is with PLQ functions.</p>
+
+     <p class="para">The points at index 0 and n+1 are stored to capture the
+       subdifferential on the intervals [-inf ,x(1)] and [x(n), inf],
+       respectively.  To indicate that a function has bounded domain
+       on the left, set x(0)=x(1) and y(0)= inf, and for boundedness
+       on the right, set x(n)=x(n+1) and y(n+1)= inf.  All other y(i),
+       and all x(i) and s(i), must be finite.</p>
+
+     <p class="para">The indicator function of a point x0, f(x) = I_{x0}(x) + y0, is
+       stored as the matrix
+
+       
+			<p class="para"><span><img src='./gph_function_2.png'/></span></p>
+
+       <p class="para">for any s0 &lt; s1.  (If s0 = s1 then the matrix collapses to
+       a single column, and the graph is no longer maximal.)</p></p></div>
+
+   <div class="refsection"><h3 class="title">Examples</h3>
+
+     <p class="para">(The matrices listed are just potential representations, that are
+     minimal in size.)</p>
+
+     <div class="programlisting"><table border="0" width="100%"><tr><td width="98%"><pre class="scilabcode"><span class="scilabcomment">%f1(x) = x^2:</span>
+<span class="scilabid">G1</span><span class="scilaboperator">=</span><span class="scilabopenclose">[</span><span class="scilabnumber">0</span> <span class="scilabnumber">1</span><span class="scilabdefault">;</span> <span class="scilabnumber">0</span> <span class="scilabnumber">2</span><span class="scilabdefault">;</span> <span class="scilabnumber">0</span> <span class="scilabnumber">1</span><span class="scilabopenclose">]</span><span class="scilabdefault">;</span>
+
+<span class="scilabcomment">%f2(x) = |x|:</span>
+<span class="scilabid">G2</span><span class="scilaboperator">=</span><span class="scilabopenclose">[</span><span class="scilaboperator">-</span><span class="scilabnumber">1</span>  <span class="scilabnumber">0</span>  <span class="scilabnumber">0</span>  <span class="scilabnumber">1</span><span class="scilabdefault">;</span> <span class="scilaboperator">-</span><span class="scilabnumber">1</span> <span class="scilaboperator">-</span><span class="scilabnumber">1</span>  <span class="scilabnumber">1</span>  <span class="scilabnumber">1</span><span class="scilabdefault">;</span> <span class="scilabnumber">1</span>  <span class="scilabnumber">0</span>  <span class="scilabnumber">0</span>  <span class="scilabnumber">1</span><span class="scilabopenclose">]</span><span class="scilabdefault">;</span>
+
+<span class="scilabcomment">%f3(x) = 0 on [-1,1]; f(x) = %inf elsewhere:</span>
+<span class="scilabid">G3</span><span class="scilaboperator">=</span><span class="scilabopenclose">[</span> <span class="scilaboperator">-</span><span class="scilabnumber">1</span> <span class="scilaboperator">-</span><span class="scilabnumber">1</span>  <span class="scilabnumber">1</span>   <span class="scilabnumber">1</span><span class="scilabdefault">;</span> <span class="scilaboperator">-</span><span class="scilabnumber">1</span>  <span class="scilabnumber">0</span>  <span class="scilabnumber">0</span>   <span class="scilabnumber">1</span><span class="scilabdefault">;</span> <span class="scilabconstants">inf</span> <span class="scilabnumber">0</span>  <span class="scilabnumber">0</span> <span class="scilabconstants">inf</span><span class="scilabopenclose">]</span><span class="scilabdefault">;</span>
+
+<span class="scilabcomment">%f4(x) = 0 on [-1,1]; f(x) = x^2 - 1 elsewhere:</span>
+<span class="scilabid">G4</span><span class="scilaboperator">=</span><span class="scilabopenclose">[</span><span class="scilaboperator">-</span><span class="scilabnumber">2</span> <span class="scilaboperator">-</span><span class="scilabnumber">1</span> <span class="scilaboperator">-</span><span class="scilabnumber">1</span>  <span class="scilabnumber">1</span>  <span class="scilabnumber">1</span>  <span class="scilabnumber">2</span><span class="scilabdefault">;</span> <span class="scilaboperator">-</span><span class="scilabnumber">4</span> <span class="scilaboperator">-</span><span class="scilabnumber">2</span>  <span class="scilabnumber">0</span>  <span class="scilabnumber">0</span>  <span class="scilabnumber">2</span>  <span class="scilabnumber">4</span><span class="scilabdefault">;</span> <span class="scilabnumber">3</span>  <span class="scilabnumber">0</span>  <span class="scilabnumber">0</span>  <span class="scilabnumber">0</span>  <span class="scilabnumber">0</span>  <span class="scilabnumber">3</span><span class="scilabopenclose">]</span><span class="scilabdefault">;</span></pre></td><td valign="top">
+             &nbsp;</td><td valign="top">&nbsp;</td><td></td></tr></table></div></div>
+
+   <div class="refsection"><h3 class="title">See Also</h3>
+     <ul class="itemizedlist"><li class="member"><a href="gph_add.html" class="link">gph_add</a></li>
+       <li class="member"><a href="gph_eval.html" class="link">gph_eval</a></li>
+       <li class="member"><a href="gph_isBounded.html" class="link">gph_isBounded</a></li>
+       <li class="member"><a href="gph_isEqual.html" class="link">gph_isEqual</a></li>
+       <li class="member"><a href="gph_lft.html" class="link">gph_lft</a></li>
+       <li class="member"><a href="gph_me.html" class="link">gph_me</a></li>
+       <li class="member"><a href="gph_pa.html" class="link">gph_pa</a></li>
+       <li class="member"><a href="gph_plot.html" class="link">gph_plot</a></li>
+       <li class="member"><a href="gph_prox.html" class="link">gph_prox</a></li>
+       <li class="member"><a href="gph_scalar.html" class="link">gph_scalar</a></li></ul></div>
+
+   <div class="refsection"><h3 class="title">Authors</h3>
+     <p class="para"><code class="literal">Bryan Gardiner</code>, University of British Columbia, BC, Canada</p></div>
+
+   <div class="refsection"><h3 class="title">Bibliography</h3>
+     <ul class="itemizedlist"><li>B. Gardiner, Y. Lucet, Submitted January 2010, Graph-Matrix Calculus for Computational Convex Analysis.</li></ul></div>
+      <div class="manualnavbar">
+          <table width="100%">
+<tr>
+      <td width="30%">
+    	<span class="previous"><a href="gph_eval.html">&lt;&lt; gph_eval</a></span>
+
+      </td>
+      <td width="40%" class="center">
+      	<span class="top"><a href="section_076511024e3715b9151c202a48bf3fcf.html">gph</a></span>
+
+      </td>
+      <td width="30%" class="next">
+      	<span class="next"><a href="gph_isBounded.html">gph_isBounded &gt;&gt;</a></span>
+
+      </td>
+    </tr></table>
+      <hr />
+    </div>
+  </body>
+</html>

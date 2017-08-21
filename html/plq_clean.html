@@ -1,0 +1,113 @@
+﻿<html><head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>plq_clean</title>
+    <style type="text/css" media="all">
+      @import url("xml_code.css");
+      @import url("c_code.css");
+      @import url("style.css");
+    </style>
+  </head>
+  <body>
+    <div class="manualnavbar">
+    <table width="100%"><tr>
+      <td width="30%">
+    	<span class="previous"><a href="plq_check.html">&lt;&lt; plq_check</a></span>
+
+      </td>
+      <td width="40%" class="center">
+      	<span class="top"><a href="section_0f3ad76c2c3a02c3ad79b8b18f6e5928.html">plq</a></span>
+
+      </td>
+      <td width="30%" class="next">
+      	<span class="next"><a href="plq_co.html">plq_co &gt;&gt;</a></span>
+
+      </td>
+    </tr></table>
+      <hr />
+    </div>
+
+
+
+    <span class="path"><a href="index.html">CCA (Computational Convex Analysis)</a> &gt;&gt; <a href="section_0f3ad76c2c3a02c3ad79b8b18f6e5928.html">plq</a> &gt; plq_clean</span>
+
+    <br /><br />
+    <div class="info"></div><div class="refnamediv"><h1 class="refname">plq_clean</h1><p class="refpurpose">Piecewise linear quadratic (plq), clears duplicate rows</p></div>
+  
+   
+  
+   
+  
+   
+  
+   
+  
+   
+  
+   <div class="refsynopsisdiv"><h3 class="title">Calling Sequence</h3><div class="synopsis"><pre><span class="default">[</span><span class="default">plqClean</span><span class="default">] = </span><span class="functionid">plq_clean</span><span class="default">(</span><span class="default">plqDirty</span><span class="default">)</span></pre></div></div>
+
+  
+   <div class="refsection"><h3 class="title">Parameters</h3>
+	  
+      <dl><dt><span class="term">plqDirty</span>
+			  
+            <dd><p class="para">matrix. A plq function with dimensions n x 4.</p></dd></dt>
+		  
+         <dt><span class="term">plqClean</span>
+			  
+            <dd><p class="para">matrix. A plq function with dimensions n x 4.</p></dd></dt></dl></div>
+ 
+  
+   <div class="refsection"><h3 class="title">Description</h3>
+     
+         <p class="para">The plq_clean function is used to help clear duplicate rows which arise during the plq fenchel conjugate operation. For example, the function reduces the number of rows by merging these two pieces of a plq function into one e.g. [0,1,0,0;0,1,0,0] -&gt; [0,1,0,0]. The function also compresses duplicate point values e.g. [0,1,0,1;0,2,0,0] -&gt; [0,1,0,1], and merges adjacent rows that are always infinite (which arise in plq_add).</p>
+
+    <p class="para">This algorithm runs in O(n) time, where n is the number of pieces in plqf.</p></div>
+  
+   <div class="refsection"><h3 class="title">Examples</h3><div class="programlisting"><table border="0" width="100%"><tr><td width="98%"><pre class="scilabcode"><span class="scilabcomment">% Example 1. Clear Duplicate Points</span>
+<span class="scilabid">plqDirty</span><span class="scilaboperator">=</span><span class="scilabopenclose">[</span><span class="scilabnumber">0</span><span class="scilabdefault">,</span><span class="scilabnumber">1</span><span class="scilabdefault">,</span><span class="scilabnumber">0</span><span class="scilabdefault">,</span><span class="scilabnumber">0</span><span class="scilabdefault">;</span><span class="scilabnumber">0</span><span class="scilabdefault">,</span><span class="scilabnumber">2</span><span class="scilabdefault">,</span><span class="scilabnumber">0</span><span class="scilabdefault">,</span><span class="scilabnumber">0</span><span class="scilabdefault">;</span><span class="scilabnumber">1</span><span class="scilabdefault">,</span><span class="scilabnumber">2</span><span class="scilabdefault">,</span><span class="scilabnumber">3</span><span class="scilabdefault">,</span><span class="scilabnumber">4</span><span class="scilabdefault">;</span><span class="scilabconstants">inf</span><span class="scilabdefault">,</span><span class="scilabnumber">3</span><span class="scilabdefault">,</span><span class="scilabnumber">0</span><span class="scilabdefault">,</span><span class="scilabnumber">0</span><span class="scilabopenclose">]</span><span class="scilabdefault">;</span>
+<span class="scilabid">plqClean</span><span class="scilaboperator">=</span><span class="scilabid">plq_clean</span><span class="scilabopenclose">(</span><span class="scilabid">plqDirty</span><span class="scilabopenclose">)</span><span class="scilabdefault">;</span>
+<span class="scilabcomment">% plqClean == [0,1,0,0;1,2,3,4;inf,3,0,0];</span>
+
+<span class="scilabcomment">% Example 2. Clear Duplicate Rows</span>
+<span class="scilabid">plqDirty</span><span class="scilaboperator">=</span><span class="scilabopenclose">[</span><span class="scilabnumber">0</span><span class="scilabdefault">,</span><span class="scilabnumber">1</span><span class="scilabdefault">,</span><span class="scilabnumber">0</span><span class="scilabdefault">,</span><span class="scilabnumber">0</span><span class="scilabdefault">;</span><span class="scilabnumber">0</span><span class="scilabdefault">,</span><span class="scilabnumber">1</span><span class="scilabdefault">,</span><span class="scilabnumber">0</span><span class="scilabdefault">,</span><span class="scilabnumber">0</span><span class="scilabdefault">;</span><span class="scilabnumber">1</span><span class="scilabdefault">,</span><span class="scilabnumber">2</span><span class="scilabdefault">,</span><span class="scilabnumber">3</span><span class="scilabdefault">,</span><span class="scilabnumber">4</span><span class="scilabdefault">;</span><span class="scilabconstants">inf</span><span class="scilabdefault">,</span><span class="scilabnumber">3</span><span class="scilabdefault">,</span><span class="scilabnumber">0</span><span class="scilabdefault">,</span><span class="scilabnumber">0</span><span class="scilabopenclose">]</span><span class="scilabdefault">;</span>
+<span class="scilabid">plqClean</span><span class="scilaboperator">=</span><span class="scilabid">plq_clean</span><span class="scilabopenclose">(</span><span class="scilabid">plqDirty</span><span class="scilabopenclose">)</span><span class="scilabdefault">;</span>
+<span class="scilabcomment">% plqClean == [0,1,0,0;1,2,3,4;inf,3,0,0];</span>
+
+<span class="scilabcomment">% Example 3. Clear Duplicate Infinites</span>
+<span class="scilabid">plqDirty</span> <span class="scilaboperator">=</span> <span class="scilabopenclose">[</span><span class="scilaboperator">-</span><span class="scilabnumber">1</span>  <span class="scilabdefault">,</span>  <span class="scilabnumber">0</span><span class="scilabdefault">,</span>  <span class="scilaboperator">-</span><span class="scilabnumber">1</span><span class="scilabdefault">,</span> <span class="scilabconstants">inf</span><span class="scilabdefault">;</span> <span class="scilabspecial">...</span>
+            <span class="scilaboperator">-</span><span class="scilabnumber">0.5</span><span class="scilabdefault">,</span>  <span class="scilabnumber">0</span><span class="scilabdefault">,</span>   <span class="scilabnumber">1</span><span class="scilabdefault">,</span> <span class="scilabconstants">inf</span><span class="scilabdefault">;</span> <span class="scilabspecial">...</span>
+             <span class="scilabnumber">0</span>  <span class="scilabdefault">,</span>  <span class="scilabnumber">0</span><span class="scilabdefault">,</span>   <span class="scilabnumber">1</span><span class="scilabdefault">,</span> <span class="scilabnumber">1</span>   <span class="scilabdefault">;</span> <span class="scilabspecial">...</span>
+             <span class="scilabnumber">0.5</span><span class="scilabdefault">,</span>  <span class="scilabnumber">0</span><span class="scilabdefault">,</span>  <span class="scilaboperator">-</span><span class="scilabnumber">1</span><span class="scilabdefault">,</span> <span class="scilabnumber">1</span>   <span class="scilabdefault">;</span> <span class="scilabspecial">...</span>
+             <span class="scilabnumber">1</span>  <span class="scilabdefault">,</span>  <span class="scilabnumber">0</span><span class="scilabdefault">,</span>  <span class="scilaboperator">-</span><span class="scilabnumber">1</span><span class="scilabdefault">,</span> <span class="scilabconstants">inf</span><span class="scilabdefault">;</span> <span class="scilabspecial">...</span>
+            <span class="scilabconstants">inf</span><span class="scilabdefault">,</span>  <span class="scilabnumber">0</span><span class="scilabdefault">,</span>   <span class="scilabnumber">1</span><span class="scilabdefault">,</span> <span class="scilabconstants">inf</span><span class="scilabopenclose">]</span><span class="scilabdefault">;</span>
+<span class="scilabid">plqClean</span> <span class="scilaboperator">=</span> <span class="scilabid">plq_clean</span><span class="scilabopenclose">(</span><span class="scilabid">plqDirty</span><span class="scilabopenclose">)</span><span class="scilabdefault">;</span>
+<span class="scilabcomment">% plqClean == [-0.5,  0,  0, inf; ...</span>
+<span class="scilabcomment">%               0  ,  0,  1, 1   ; ...</span>
+<span class="scilabcomment">%               0.5,  0, -1, 1   ; ...</span>
+<span class="scilabcomment">%               inf,  0,  0, inf];</span></pre></td><td valign="top"><a href="scilab://scilab.execexample/"><img src="ScilabExecute.png" border="0"/></a></td><td valign="top"><a href="scilab://scilab.editexample/"><img src="ScilabEdit.png" border="0"/></a></td><td></td></tr></table></div></div>
+
+
+   <div class="refsection"><h3 class="title">See Also</h3><ul class="itemizedlist"><li class="member"><a href="plq_function.html" class="link">plq_function</a></li></ul></div>
+
+  
+   <div class="refsection"><h3 class="title">Authors</h3><p class="para"><code class="literal">Mike Trienis</code>, University of British Columbia, BC, Canada</p></div>
+      <div class="manualnavbar">
+          <table width="100%">
+<tr>
+      <td width="30%">
+    	<span class="previous"><a href="plq_check.html">&lt;&lt; plq_check</a></span>
+
+      </td>
+      <td width="40%" class="center">
+      	<span class="top"><a href="section_0f3ad76c2c3a02c3ad79b8b18f6e5928.html">plq</a></span>
+
+      </td>
+      <td width="30%" class="next">
+      	<span class="next"><a href="plq_co.html">plq_co &gt;&gt;</a></span>
+
+      </td>
+    </tr></table>
+      <hr />
+    </div>
+  </body>
+</html>

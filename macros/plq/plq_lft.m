@@ -1,0 +1,87 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%PLQ CONJUGATE%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+function plqfstar = plq_lft(plqf,isConvex)
+    if nargin<=1 
+         isConvex=false; 
+    end;%default to non-convex functions
+
+    if ~isConvex 
+        plqf=plq_co(plqf); 
+    end;
+    x=plqf(:,1);a=plqf(:,2);b=plqf(:,3);c=plqf(:,4);
+    n = size(x,1); %number of rows
+    i=1;%primal index: x(i); scan plqf
+    j=1; %dual index: s(j); build plqfstar
+    %special case: Indicator of a point or linear function
+    if n == 1 
+
+        if  x(i) == inf & a == 0 
+%LINE - TO - POINT
+            plqfstar=[b,0,0,-c];return;
+        elseif x(i) < inf 
+ %POINT - TO - LINE
+               plqfstar=[inf,0,x,-c];return;
+        end
+    end
+    
+    if c(1) == inf 
+ %domain is left-bounded: add a linear part
+        s(1) = 2*a(2)*x(1) + b(2);
+        sa(1) = 0;
+        sb(1) = x(1);
+        sc(1) = -a(2)*x(1).^2-b(2)*x(1)-c(2);
+        
+        j = j + 1;i = i + 1;
+    elseif a(1)==0 
+ %first part is linear: add infinity + linear part
+        s(1) = b(1);
+        sa(1) = 0;
+        sb(1) = 0;
+        sc(1) = inf;
+        s(2) = 2*a(2)*x(1) + b(2);
+        sa(2) = 0;
+        sb(2) = x(1);
+        sc(2)=-b(1)*x(1) - c(1);
+        %since -b(1)*x(1) - c(1)=-a(2)*x(1).^2-b(2)*x(1)-c(2) the formula is the same as for left-bounded above
+        j = j + 2;i = i + 1;
+    end
+    %Now each line in plqf(i:n-1,:) gives a quadratic part + a linear part
+
+            %and each value of i between istart and n-1 gives 2 values for j
+    jend=2*(n-i)+j-1;%n-i=(n-1)-(i-1)=number of primal values to read; j-1=dual values already added
+
+    if jend > j 
+%when there is a middle part
+        jq=j:2:jend-1;       
+        jl=j+1:2:jend;
+        ai=a(i:n-1);xi=x(i:n-1);bi=b(i:n-1);ci=c(i:n-1);t=4*ai;%tmp vars to reduce calculations
+        sq=2*ai.*xi+bi;saq=t.^(-1);sbq=-2*bi./ t;scq=(bi.^2)./ t-ci;%quadratic part (careful 1./t<>t.^(-1))    
+        sl=2*a(i+1:n).*xi+b(i+1:n);sal=zeros(size(xi));sbl=xi;scl=-ai.*xi.^2-bi.*xi-ci;%linear part
+        z=zeros(jend-j+1,1);
+        s(j:jend)=z;sa(j:jend)=z;
+        sb(j:jend)=z;sc(j:jend)=z;
+        s(jq)=sq;sa(jq)=saq;sb(jq)=sbq;sc(jq)=scq;
+        s(jl)=sl;sa(jl)=sal;sb(jl)=sbl;sc(jl)=scl;
+        j=jend+1;
+    end;
+    if c(n) == inf 
+%domain is right-bounded: add a linear part
+        s(j) = inf;
+        sa(j) = 0;
+        sb(j) = x(n-1);
+        sc(j) = -a(n-1)*x(n-1).^2-b(n-1)*x(n-1)-c(n-1);
+    elseif a(n)==0 
+%last part is linear: add infinity
+        s(j) = inf;
+        sa(j) = 0;
+        sb(j) = 0;
+        sc(j) = inf;
+    else %last part is quadratic: add a quadratic
+        s(j) = 2*a(n)*x(n) + b(n);    
+        sa(j) = 1/(4*a(n));
+        sb(j) = -b(n)/(2*a(n));
+        sc(j) = b(n).^2/(4*a(n)) - c(n);%always finite value since a(n)>0
+    end
+    j = j + 1;i = i + 1;
+    plqfstar = plq_clean([ s' , sa' , sb' , sc' ]);
+end
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%PLQ CONJUGATE%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

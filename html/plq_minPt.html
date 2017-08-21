@@ -1,0 +1,109 @@
+﻿<html><head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>plq_minPt</title>
+    <style type="text/css" media="all">
+      @import url("xml_code.css");
+      @import url("c_code.css");
+      @import url("style.css");
+    </style>
+  </head>
+  <body>
+    <div class="manualnavbar">
+    <table width="100%"><tr>
+      <td width="30%">
+    	<span class="previous"><a href="plq_min.html">&lt;&lt; plq_min</a></span>
+
+      </td>
+      <td width="40%" class="center">
+      	<span class="top"><a href="section_0f3ad76c2c3a02c3ad79b8b18f6e5928.html">plq</a></span>
+
+      </td>
+      <td width="30%" class="next">
+      	<span class="next"><a href="plq_pa.html">plq_pa &gt;&gt;</a></span>
+
+      </td>
+    </tr></table>
+      <hr />
+    </div>
+
+
+
+    <span class="path"><a href="index.html">CCA (Computational Convex Analysis)</a> &gt;&gt; <a href="section_0f3ad76c2c3a02c3ad79b8b18f6e5928.html">plq</a> &gt; plq_minPt</span>
+
+    <br /><br />
+    <div class="info"></div>
+
+  <div class="refnamediv"><h1 class="refname">plq_minPt</h1>
+    <p class="refpurpose">Piecewise linear quadratic (plq), minimum point</p></div>
+
+   <div class="refsynopsisdiv"><h3 class="title">Calling Sequence</h3>
+     <div class="synopsis"><pre><span class="default">[</span><span class="default">fmin</span><span class="default">, </span><span class="default">xmin</span><span class="default">] = </span><span class="functionid">plq_minPt</span><span class="default">(</span><span class="default">plqf</span><span class="default">)</span></pre></div></div>
+
+   <div class="refsection"><h3 class="title">Parameters</h3>
+     <dl><dt><span class="term">plqf</span>
+         <dd><p class="para">matrix. A PLQ function.</p></dd></dt>
+
+       <dt><span class="term">fmin</span>
+         <dd><p class="para">real number, or infinite.  The minimum value of the function plqf.</p></dd></dt>
+
+       <dt><span class="term">xmin</span>
+         <dd><p class="para">column vector.  A vector of points in the argmin of plqf.</p></dd></dt></dl></div>
+
+   <div class="refsection"><h3 class="title">Description</h3>
+
+     <p class="para">Performs a linear scan of plqf, checking each of its pieces, to
+       determine the set of points at which plqf attains its minimum.
+       fmin may be %inf (if plqf is %inf everywhere) or -%inf (if plqf
+       reaches -%inf somewhere, or in the limit).</p>
+
+     <p class="para">The vector xmin will contain all minimizers of plqf, except
+       when plqf is minimized over an interval, in which case xmin
+       will contain only the boundaries of this interval.  If plqf is
+       a constant function, then xmin is simply [0].  The vector xmin
+       is always returned in nondecreasing order.</p>
+
+     <p class="para">This algorithm runs in O(n log n) time, due to the use of
+       sorting subroutines.</p></div>
+
+   <div class="refsection"><h3 class="title">Examples</h3>
+     <div class="programlisting"><table border="0" width="100%"><tr><td width="98%"><pre class="scilabcode"><span class="scilabid">plqf</span> <span class="scilaboperator">=</span> <span class="scilabopenclose">[</span><span class="scilaboperator">-</span><span class="scilabnumber">3</span> <span class="scilabnumber">0</span> <span class="scilaboperator">-</span><span class="scilabnumber">0.5</span> <span class="scilaboperator">-</span><span class="scilabnumber">0.5</span><span class="scilabdefault">;</span><span class="scilaboperator">-</span><span class="scilabnumber">2</span> <span class="scilabnumber">0</span>  <span class="scilabnumber">2</span> <span class="scilabnumber">7</span><span class="scilabdefault">;</span><span class="scilabnumber">0</span> <span class="scilabnumber">0</span> <span class="scilaboperator">-</span><span class="scilabnumber">0.5</span> <span class="scilabnumber">2</span><span class="scilabdefault">;</span><span class="scilabconstants">inf</span> <span class="scilabnumber">0</span> <span class="scilabnumber">2</span> <span class="scilabnumber">2</span><span class="scilabopenclose">]</span><span class="scilabdefault">;</span>
+<span class="scilabopenclose">[</span><span class="scilabid">fmin</span><span class="scilabdefault">,</span> <span class="scilabid">xmin</span><span class="scilabopenclose">]</span> <span class="scilaboperator">=</span> <span class="scilabid">plq_minPt</span><span class="scilabopenclose">(</span><span class="scilabid">plqf</span><span class="scilabopenclose">)</span><span class="scilabdefault">,</span>
+<span class="scilabid">plq_plotMultiple</span><span class="scilabopenclose">(false</span><span class="scilabdefault">,</span> <span class="scilabdefault">false,</span> <span class="scilabid">plqf</span><span class="scilabopenclose">)</span><span class="scilabdefault">;</span>
+
+<span class="scilabid">plqf</span>  <span class="scilaboperator">=</span> <span class="scilabopenclose">[</span><span class="scilaboperator">-</span><span class="scilabnumber">15.495963</span>    <span class="scilabnumber">0.</span>         <span class="scilaboperator">-</span><span class="scilabnumber">0.6666667</span>  <span class="scilaboperator">-</span><span class="scilabnumber">2.2597654</span><span class="scilabdefault">; ...</span>
+          <span class="scilaboperator">-</span><span class="scilabnumber">5.3940994</span>    <span class="scilabnumber">0.0058845</span>  <span class="scilaboperator">-</span><span class="scilabnumber">0.4842946</span>  <span class="scilaboperator">-</span><span class="scilabnumber">0.8467499</span><span class="scilabdefault">; ...</span>
+          <span class="scilaboperator">-</span><span class="scilabnumber">4.002795</span>     <span class="scilabnumber">0.100625</span>     <span class="scilabnumber">0.5377847</span>    <span class="scilabnumber">1.9098488</span><span class="scilabdefault">; ...</span>
+          <span class="scilaboperator">-</span><span class="scilabnumber">3.8909938</span>  <span class="scilaboperator">-</span><span class="scilabnumber">0.0993827</span>  <span class="scilaboperator">-</span><span class="scilabnumber">1.0633951</span>  <span class="scilaboperator">-</span><span class="scilabnumber">1.2947485</span><span class="scilabdefault">; ...</span>
+          <span class="scilaboperator">-</span><span class="scilabnumber">0.3961698</span>    <span class="scilabnumber">0.100625</span>     <span class="scilabnumber">0.4930625</span>    <span class="scilabnumber">1.7333349</span><span class="scilabdefault">; ...</span>
+           <span class="scilabnumber">0.9454451</span>  <span class="scilaboperator">-</span><span class="scilabnumber">0.0993827</span>    <span class="scilabnumber">0.3345885</span>    <span class="scilabnumber">1.7019436</span><span class="scilabdefault">; ...</span>
+           <span class="scilabnumber">4.1586957</span>    <span class="scilabnumber">0.100625</span>   <span class="scilaboperator">-</span><span class="scilabnumber">0.0436042</span>    <span class="scilabnumber">1.8807238</span><span class="scilabdefault">; ...</span>
+          <span class="scilabnumber">10.626398</span>    <span class="scilabnumber">0.0803995</span>    <span class="scilabnumber">0.1246192</span>    <span class="scilabnumber">1.5309288</span><span class="scilabdefault">; ...</span>
+         <span class="scilabconstants">inf</span>          <span class="scilabnumber">0.</span>           <span class="scilabnumber">1.8333333</span>  <span class="scilaboperator">-</span><span class="scilabnumber">7.5478088</span><span class="scilabopenclose">]</span><span class="scilabdefault">;</span>
+<span class="scilabopenclose">[</span><span class="scilabid">fmin</span><span class="scilabdefault">,</span> <span class="scilabid">xmin</span><span class="scilabopenclose">]</span> <span class="scilaboperator">=</span> <span class="scilabid">plq_minPt</span><span class="scilabopenclose">(</span><span class="scilabid">plqf</span><span class="scilabopenclose">)</span><span class="scilabdefault">,</span>
+<span class="scilabid">plq_plotMultiple</span><span class="scilabopenclose">(false</span><span class="scilabdefault">,</span> <span class="scilabdefault">false,</span> <span class="scilabid">plqf</span><span class="scilabopenclose">)</span><span class="scilabdefault">;</span></pre></td><td></td></tr></table></div></div>
+
+   <div class="refsection"><h3 class="title">See Also</h3>
+     <ul class="itemizedlist"><li class="member"><a href="plq_function.html" class="link">plq_function</a></li></ul></div>
+
+   <div class="refsection"><h3 class="title">Authors</h3>
+     <p class="para"><code class="literal">Bryan Gardiner</code>, University of British Columbia, BC, Canada</p></div>
+      <div class="manualnavbar">
+          <table width="100%">
+<tr>
+      <td width="30%">
+    	<span class="previous"><a href="plq_min.html">&lt;&lt; plq_min</a></span>
+
+      </td>
+      <td width="40%" class="center">
+      	<span class="top"><a href="section_0f3ad76c2c3a02c3ad79b8b18f6e5928.html">plq</a></span>
+
+      </td>
+      <td width="30%" class="next">
+      	<span class="next"><a href="plq_pa.html">plq_pa &gt;&gt;</a></span>
+
+      </td>
+    </tr></table>
+      <hr />
+    </div>
+  </body>
+</html>

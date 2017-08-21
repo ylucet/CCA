@@ -1,0 +1,99 @@
+﻿<html><head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>plq_deconv_lft</title>
+    <style type="text/css" media="all">
+      @import url("xml_code.css");
+      @import url("c_code.css");
+      @import url("style.css");
+    </style>
+  </head>
+  <body>
+    <div class="manualnavbar">
+    <table width="100%"><tr>
+      <td width="30%">
+    	<span class="previous"><a href="plq_coSplit.html">&lt;&lt; plq_coSplit</a></span>
+
+      </td>
+      <td width="40%" class="center">
+      	<span class="top"><a href="section_0f3ad76c2c3a02c3ad79b8b18f6e5928.html">plq</a></span>
+
+      </td>
+      <td width="30%" class="next">
+      	<span class="next"><a href="plq_diff.html">plq_diff &gt;&gt;</a></span>
+
+      </td>
+    </tr></table>
+      <hr />
+    </div>
+
+
+
+    <span class="path"><a href="index.html">CCA (Computational Convex Analysis)</a> &gt;&gt; <a href="section_0f3ad76c2c3a02c3ad79b8b18f6e5928.html">plq</a> &gt; plq_deconv_lft</span>
+
+    <br /><br />
+    <div class="info"></div>
+
+  <div class="refnamediv"><h1 class="refname">plq_deconv_lft</h1>
+    <p class="refpurpose">Piecewise linear quadratic (plq), deconvolution (via LFT)</p></div>
+
+   <div class="refsynopsisdiv"><h3 class="title">Calling Sequence</h3>
+     <div class="synopsis"><pre><span class="default">plqic</span><span class="default"> = </span><span class="functionid">plq_deconv_lft</span><span class="default">(</span><span class="default">plqf</span><span class="default">, </span><span class="default">plqg</span><span class="default">)</span></pre></div></div>
+
+   <div class="refsection"><h3 class="title">Parameters</h3>
+     <dl><dt><span class="term">plqf</span>
+         <dd><p class="para">matrix. A PLQ function.</p></dd></dt>
+
+       <dt><span class="term">plqg</span>
+         <dd><p class="para">matrix. A PLQ function.</p></dd></dt>
+
+       <dt><span class="term">plqic</span>
+         <dd><p class="para">matrix.  The PLQ function that is the deconvolution of plqf and plqg.</p></dd></dt></dl></div>
+
+   <div class="refsection"><h3 class="title">Description</h3>
+
+     <p class="para">Computes the deconvolution of two convex PLQ functions.  The
+       deconvolution is defined by the formula
+       
+		<p class="para"><span><img src='./plq_deconv_lft_1.png'/></span></p>
+	   <p class="para">Under certain conditions, deconvolution can be rewritten to use
+       the Legendre-Fenchel conjugate (denoted *),</p>
+       
+	   <p class="para"><span><img src='./plq_deconv_lft_2.png'/></span></p>
+	   <p class="para">This deconvolution is also a PLQ function.  This algorithm
+       runs in O(n + m) time, where n and m are the size of f and g,
+       respectively.</p></p></div>
+
+   <div class="refsection"><h3 class="title">Examples</h3>
+     <div class="programlisting"><table border="0" width="100%"><tr><td width="98%"><pre class="scilabcode"><span class="scilabid">plqf</span> <span class="scilaboperator">=</span> <span class="scilabopenclose">[</span><span class="scilaboperator">-</span><span class="scilabnumber">2.5</span><span class="scilabdefault">,</span><span class="scilabnumber">0</span><span class="scilabdefault">,</span><span class="scilaboperator">-</span><span class="scilabnumber">1</span><span class="scilabdefault">,</span><span class="scilaboperator">-</span><span class="scilabnumber">1.25</span><span class="scilabdefault">;</span> <span class="scilaboperator">-</span><span class="scilabnumber">2</span><span class="scilabdefault">,</span><span class="scilabnumber">1</span><span class="scilabdefault">,</span><span class="scilabnumber">4</span><span class="scilabdefault">,</span><span class="scilabnumber">5</span><span class="scilabdefault">;</span> <span class="scilabnumber">0</span><span class="scilabdefault">,</span><span class="scilabnumber">0</span><span class="scilabdefault">,</span><span class="scilabnumber">0</span><span class="scilabdefault">,</span><span class="scilabnumber">1</span><span class="scilabdefault">;</span> <span class="scilabnumber">0.5</span><span class="scilabdefault">,</span><span class="scilabnumber">1</span><span class="scilabdefault">,</span><span class="scilabnumber">0</span><span class="scilabdefault">,</span><span class="scilabnumber">1</span><span class="scilabdefault">;</span> <span class="scilabconstants">inf</span><span class="scilabdefault">,</span><span class="scilabnumber">0</span><span class="scilabdefault">,</span><span class="scilabnumber">1</span><span class="scilabdefault">,</span><span class="scilabnumber">0.75</span><span class="scilabopenclose">]</span><span class="scilabdefault">;</span>
+<span class="scilabid">plqg</span> <span class="scilaboperator">=</span> <span class="scilabopenclose">[</span><span class="scilabconstants">inf</span><span class="scilabdefault">,</span><span class="scilabnumber">1</span><span class="scilabdefault">,</span><span class="scilabnumber">2</span><span class="scilabdefault">,</span><span class="scilabnumber">1</span><span class="scilabopenclose">]</span><span class="scilabdefault">;</span>
+<span class="scilabid">plqdc</span> <span class="scilaboperator">=</span> <span class="scilabid">plq_deconv_lft</span><span class="scilabopenclose">(</span><span class="scilabid">plqf</span><span class="scilabdefault">,</span> <span class="scilabid">plqg</span><span class="scilabopenclose">)</span><span class="scilabdefault">,</span>
+<span class="scilabid">plq_plotMultiple</span><span class="scilabopenclose">(</span><span class="scilaboperator">-</span><span class="scilabnumber">4</span><span class="scilabdefault">,</span> <span class="scilabnumber">3</span><span class="scilabdefault">,</span> <span class="scilabid">plqf</span><span class="scilabdefault">,</span> <span class="scilabid">plqg</span><span class="scilabdefault">,</span> <span class="scilabid">plqdc</span><span class="scilabopenclose">)</span><span class="scilabdefault">;</span>
+<a class="scilabcommand" href="scilab://xtitle">title</a><span class="scilabopenclose">(</span><span class="scilabstring">&#0034;</span><span class="scilabstring">PLQ Convex Deconvolution</span><span class="scilabstring">&#0034;</span><span class="scilabopenclose">)</span><span class="scilabdefault">;</span>
+</pre></td><td></td></tr></table></div></div>
+
+   <div class="refsection"><h3 class="title">See Also</h3>
+     <ul class="itemizedlist"><li class="member"><a href="plq_infconv_lft.html" class="link">plq_infconv_lft</a></li>
+       <li class="member"><a href="plq_function.html" class="link">plq_function</a></li></ul></div>
+
+   <div class="refsection"><h3 class="title">Authors</h3>
+     <p class="para"><code class="literal">Bryan Gardiner</code>, University of British Columbia, BC, Canada</p></div>
+      <div class="manualnavbar">
+          <table width="100%">
+<tr>
+      <td width="30%">
+    	<span class="previous"><a href="plq_coSplit.html">&lt;&lt; plq_coSplit</a></span>
+
+      </td>
+      <td width="40%" class="center">
+      	<span class="top"><a href="section_0f3ad76c2c3a02c3ad79b8b18f6e5928.html">plq</a></span>
+
+      </td>
+      <td width="30%" class="next">
+      	<span class="next"><a href="plq_diff.html">plq_diff &gt;&gt;</a></span>
+
+      </td>
+    </tr></table>
+      <hr />
+    </div>
+  </body>
+</html>

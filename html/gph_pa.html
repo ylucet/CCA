@@ -1,0 +1,109 @@
+﻿<html><head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>gph_pa</title>
+    <style type="text/css" media="all">
+      @import url("xml_code.css");
+      @import url("c_code.css");
+      @import url("style.css");
+    </style>
+  </head>
+  <body>
+    <div class="manualnavbar">
+    <table width="100%"><tr>
+      <td width="30%">
+    	<span class="previous"><a href="gph_me.html">&lt;&lt; gph_me</a></span>
+
+      </td>
+      <td width="40%" class="center">
+      	<span class="top"><a href="section_076511024e3715b9151c202a48bf3fcf.html">gph</a></span>
+
+      </td>
+      <td width="30%" class="next">
+      	<span class="next"><a href="gph_plot.html">gph_plot &gt;&gt;</a></span>
+
+      </td>
+    </tr></table>
+      <hr />
+    </div>
+
+
+
+    <span class="path"><a href="index.html">CCA (Computational Convex Analysis)</a> &gt;&gt; <a href="section_076511024e3715b9151c202a48bf3fcf.html">gph</a> &gt; gph_pa</span>
+
+    <br /><br />
+    <div class="info"></div>
+
+  <div class="refnamediv"><h1 class="refname">gph_pa</h1>
+    <p class="refpurpose">Graph-matrix calculus (GPH), Proximal Average (PA)</p></div>
+
+   <div class="refsynopsisdiv"><h3 class="title">Calling Sequence</h3>
+     <div class="synopsis"><pre><span class="default">[</span><span class="default">G</span><span class="default">, </span><span class="default">X1</span><span class="default">, </span><span class="default">X2</span><span class="default">, </span><span class="default">Y1</span><span class="default">, </span><span class="default">Fq1</span><span class="default">, </span><span class="default">Fq2</span><span class="default">] = </span><span class="functionid">gph_pa</span><span class="default">(</span><span class="default">G1</span><span class="default">, </span><span class="default">G2</span><span class="default">, </span><span class="default">lambda</span><span class="default">)</span></pre></div></div>
+
+   <div class="refsection"><h3 class="title">Parameters</h3>
+     <dl><dt><span class="term">G1</span>
+         <dd><p class="para">matrix.  The first input function f1, in GPH matrix form.</p></dd></dt>
+
+       <dt><span class="term">G2</span>
+         <dd><p class="para">matrix.  The second input function f2, in GPH matrix form.</p></dd></dt>
+
+       <dt><span class="term">lambda</span>
+         <dd><p class="para">constant in [0,1].  lambda = lambda2 = the weighting of G2 in the PA.  The weight of G1 is lambda1 = (1-lambda).</p></dd></dt>
+
+       <dt><span class="term">G</span>
+         <dd><p class="para">matrix.  The proximal average, in GPH matrix form.</p></dd></dt>
+
+       <dt><span class="term">X1, X2</span>
+         <dd><p class="para">vectors.  The points at which the infimum is attained; X = lambda1.*X1 + lambda2.*X2.</p></dd></dt>
+
+       <dt><span class="term">Y1</span>
+         <dd><p class="para">vector.  Y1=f1(X1), and S = Y1-X is the subdifferential of the PA.</p></dd></dt>
+
+       <dt><span class="term">Fq1, Fq2</span>
+         <dd><p class="para">vectors.  Images of X1 and X2 so the PA is F = lambda1.*Fq1 + lambda2.*Fq2 - X.^2/2.</p></dd></dt></dl></div>
+
+   <div class="refsection"><h3 class="title">Description</h3>
+
+     <p class="para">Computes the proximal average (PA) of two convex functions in
+       GPH matrix form.  Computing the PA requires finding the points
+       in each of the functions&#0039; domains that make the proximal
+       average exact for a specific X value.  This is done by
+       parameterizing the graph with respect to X1, and determining
+       the corresponding X2 values.</p></div>
+
+   <div class="refsection"><h3 class="title">Examples</h3>
+     <div class="programlisting"><table border="0" width="100%"><tr><td width="98%"><pre class="scilabcode"><span class="scilabid">G1</span> <span class="scilaboperator">=</span> <span class="scilabopenclose">[</span><span class="scilaboperator">-</span><span class="scilabnumber">1</span> <span class="scilabnumber">0</span> <span class="scilabnumber">0</span> <span class="scilabnumber">1</span><span class="scilabdefault">;</span> <span class="scilaboperator">-</span><span class="scilabnumber">1</span> <span class="scilaboperator">-</span><span class="scilabnumber">1</span> <span class="scilabnumber">0</span> <span class="scilabnumber">2</span><span class="scilabdefault">;</span> <span class="scilabnumber">1</span> <span class="scilabnumber">0</span> <span class="scilabnumber">0</span> <span class="scilabnumber">1</span><span class="scilabopenclose">]</span><span class="scilabdefault">;</span>
+<span class="scilabid">G2</span> <span class="scilaboperator">=</span> <span class="scilabopenclose">[</span><span class="scilabnumber">0</span> <span class="scilabnumber">0</span><span class="scilabdefault">;</span> <span class="scilabnumber">0</span> <span class="scilabnumber">1</span><span class="scilabdefault">;</span> <span class="scilabnumber">1</span> <span class="scilabnumber">1</span><span class="scilabopenclose">]</span><span class="scilabdefault">;</span>
+
+<span class="scilabskeyword">for</span> <span class="scilabid">lambda</span> <span class="scilaboperator">=</span> <span class="scilabnumber">0</span><span class="scilabspecial">:</span><span class="scilabnumber">0.1</span><span class="scilabspecial">:</span><span class="scilabnumber">1</span>
+    <span class="scilabid">gph_plot</span><span class="scilabopenclose">(</span><span class="scilabid">gph_pa</span><span class="scilabopenclose">(</span><span class="scilabid">G1</span><span class="scilabdefault">,</span> <span class="scilabid">G2</span><span class="scilabdefault">,</span> <span class="scilabid">lambda</span><span class="scilabopenclose">)</span><span class="scilabopenclose">)</span><span class="scilabdefault">;</span>
+    
+<span class="scilabskeyword">end</span><span class="scilabdefault">;</span></pre></td><td valign="top">&nbsp;</td><td valign="top">&nbsp;</td><td></td></tr></table></div></div>
+
+   <div class="refsection"><h3 class="title">See Also</h3>
+     <ul class="itemizedlist"><li class="member"><a href="gph_function.html" class="link">gph_function</a></li></ul></div>
+
+   <div class="refsection"><h3 class="title">Authors</h3>
+     <p class="para"><code class="literal">Bryan Gardiner</code>, University of British Columbia, BC, Canada</p></div>
+    <br />
+
+    <div class="manualnavbar">
+    <table width="100%">
+    <tr><td colspan="3" class="next"><a href="http://bugzilla.scilab.org/enter_bug.cgi?product=Scilab%20software&component=Documentation%20pages" class="ulink">Report an issue</a></td></tr>
+<tr>
+      <td width="30%">
+    	<span class="previous"><a href="gph_me.html">&lt;&lt; gph_me</a></span>
+
+      </td>
+      <td width="40%" class="center">
+      	<span class="top"><a href="section_076511024e3715b9151c202a48bf3fcf.html">gph</a></span>
+
+      </td>
+      <td width="30%" class="next">
+      	<span class="next"><a href="gph_plot.html">gph_plot &gt;&gt;</a></span>
+
+      </td>
+    </tr></table>
+      <hr />
+    </div>
+  </body>
+</html>

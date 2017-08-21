@@ -1,0 +1,27 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>plq_conv_on_interval</title><link rel="stylesheet" href="javahelp.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.73.2"><link rel="start" href="index.html" title="CCA (Computational Convex Analysis)"><link rel="up" href="section_4768219997f2932d1970ff70dcc9cef9.html" title="Part&nbsp;I.&nbsp;CCA (Computational Convex Analysis)"><link rel="prev" href="plq_coSplit.html" title="plq_coSplit"><link rel="next" href="plq_deconv_lft.html" title="plq_ll"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="refentry" lang="en"><a name="plq_conv_on_interval"></a><div class="titlepage"></div><div class="refnamediv"><h2>Name</h2><p>plq_conv_on_interval &#8212; Piecewise linear quadratic (plq), two-piece convexity on interval</p></div><div class="refsynopsisdiv"><h2>Calling Sequence</h2><pre class="synopsis">plqco = plq_conv_on_interval(f1,f2,x1,x3,x5)</pre></div><div class="refsection" lang="en"><a name="d0e5394"></a><h2>Parameters</h2><div class="variablelist"><dl><dt><span class="term">f1</span></dt><dd><p>One row of a plq function, on the interval (x1,x3].
+				  </p></dd><dt><span class="term">f2</span></dt><dd><p>The next row of the plq function, on the interval (x3,x5].
+				  </p></dd><dt><span class="term">x1</span></dt><dd><p>The open lower bound of f1.
+				  </p></dd><dt><span class="term">x3</span></dt><dd><p>The closed lower bound of f1, and the open upper bound of f2.
+				  </p></dd><dt><span class="term">x5</span></dt><dd><p>The closed upper bound of f2.
+				  </p></dd><dt><span class="term">plqco</span></dt><dd><p>A plq function that is the convex hull of f1 and f2 on (x1,x5].
+				  </p></dd></dl></div></div><div class="refsection" lang="en"><a name="d0e5434"></a><h2>Description</h2><p>
+	     Takes two adjacent pieces of a plq function, and the intervals over which they are defined, and returns a plq function that is defined over the domain of both of the pieces, and is the convex hull of both of the pieces.
+    </p></div><div class="refsection" lang="en"><a name="d0e5439"></a><h2>Examples</h2><pre class="programlisting">
+plqf = [1,1,0,0; 4,0,0,1]; 
+f1 = plqf(1,:);
+f2 = plqf(2,:);
+x1=-2.5;
+x3=f1(1,1);
+x5=f2(1,1);
+result = plq_conv_on_interval(f1,f2,x1,x3,x5); // [0.1270167,1,0,0; 4,0,0.2540333,-0.0161332]
+plq_plot(plqf, result, -2.5, 4);
+  </pre></div><div class="refsection" lang="en"><a name="d0e5444"></a><h2>See Also</h2><span class="simplelist">
+         <a class="link" href="plq_coDirect.html" title="plq_coDirect">plq_coDirect</a>
+      , 
+         <a class="link" href="plq_function.html" title="plq_function">plq_function</a>
+      </span></div><div class="refsection" lang="en"><a name="d0e5458"></a><h2>Authors</h2><p>
+	  
+      <code class="literal">Bryan Gardiner</code>, University of British Columbia, BC, Canada
+  </p></div></div></body></html>

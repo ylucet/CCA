@@ -1,0 +1,131 @@
+﻿<html><head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>plq_coDirect</title>
+    <style type="text/css" media="all">
+      @import url("xml_code.css");
+      @import url("c_code.css");
+      @import url("style.css");
+    </style>
+  </head>
+  <body>
+    <div class="manualnavbar">
+    <table width="100%"><tr>
+      <td width="30%">
+    	<span class="previous"><a href="plq_co.html">&lt;&lt; plq_co</a></span>
+
+      </td>
+      <td width="40%" class="center">
+      	<span class="top"><a href="section_0f3ad76c2c3a02c3ad79b8b18f6e5928.html">plq</a></span>
+
+      </td>
+      <td width="30%" class="next">
+      	<span class="next"><a href="plq_coSplit.html">plq_coSplit &gt;&gt;</a></span>
+
+      </td>
+    </tr></table>
+      <hr />
+    </div>
+
+
+
+    <span class="path"><a href="index.html">CCA (Computational Convex Analysis)</a> &gt;&gt; <a href="section_0f3ad76c2c3a02c3ad79b8b18f6e5928.html">plq</a> &gt; plq_coDirect</span>
+
+    <br /><br />
+    <div class="info"></div><div class="refnamediv"><h1 class="refname">plq_coDirect</h1><p class="refpurpose">Piecewise linear quadratic (plq), Convex hull (direct algorithm)</p></div>
+  
+   
+  
+   
+  
+   
+  
+   
+  
+   
+
+  
+   <div class="refsynopsisdiv"><h3 class="title">Calling Sequence</h3><div class="synopsis"><pre><span class="default">[</span><span class="default">plqco</span><span class="default">,</span><span class="default">iters</span><span class="default">] = </span><span class="functionid">plq_coDirect</span><span class="default">(</span><span class="default">plqf</span><span class="default">)</span></pre></div></div>
+
+  
+   <div class="refsection"><h3 class="title">Parameters</h3>
+	  
+      <dl><dt><span class="term">plqf</span>
+			  
+            <dd><p class="para">matrix. A plq function whose convex hull will be computed.</p></dd></dt>
+		  
+		  
+         <dt><span class="term">plqco</span>
+			  
+            <dd><p class="para">matrix. A plq function that is the convex hull of the original function.</p></dd></dt>
+		
+		
+		<dt><span class="term">iters</span>
+			  
+            <dd><p class="para">Numerial Value. Number of iterations it took in computation</p></dd></dt></dl></div>
+ 
+  
+   <div class="refsection"><h3 class="title">Description</h3>
+     
+         <p class="para">Computes the convex hull of a continuous, but not necessarily convex, plq function, where the input and output are given in the form of a plq matrix.</p>
+
+    <p class="para">This algorithm performs a left-to-right plane sweep, examining
+      two adjacent pieces at a time.  It convexifies two pieces, and
+      moves rightward, adding to the &#0034;current convex hull&#0034; to the left
+      of the index, or backtracks if convexity was broken at a point.
+      This algorithm runs in linear time, as each iteration either
+      moves rightward, backtracks and merges two pieces, or backtracks
+      without merging, but this can happen at most a linear number of
+      times.</p>
+
+   <p class="para">A special case is when three adjacent pieces are quadratic,
+     linear, and quadratic, each quadratic piece contains the vertex
+     of the quadratic, and a linear piece which is not the convex hull
+     is between.  To prevent cycling convergent behaviour, the linear
+     piece is directly replaced with the convex hull of the two
+     quadratic pieces.</p></div>
+
+  
+   <div class="refsection"><h3 class="title">Examples</h3><div class="programlisting"><table border="0" width="100%"><tr><td width="98%"><pre class="scilabcode">%<span class="scilabcomment"> The hull of a linear-linear-quadratic function:</span>
+<span class="scilabid">plqf</span> <span class="scilaboperator">=</span> <span class="scilabopenclose">[</span><span class="scilabnumber">0</span><span class="scilabdefault">,</span><span class="scilabnumber">0</span><span class="scilabdefault">,</span><span class="scilabnumber">1</span><span class="scilabdefault">,</span><span class="scilabnumber">0</span><span class="scilabdefault">;</span><span class="scilabnumber">2</span><span class="scilabdefault">,</span><span class="scilabnumber">0</span><span class="scilabdefault">,</span><span class="scilabnumber">0</span><span class="scilabdefault">,</span><span class="scilabnumber">0</span><span class="scilabdefault">;</span><span class="scilabconstants">inf</span><span class="scilabdefault">,</span><span class="scilabnumber">1</span><span class="scilabdefault">,</span><span class="scilaboperator">-</span><span class="scilabnumber">4</span><span class="scilabdefault">,</span><span class="scilabnumber">4</span><span class="scilabopenclose">]</span><span class="scilabdefault">;</span>
+<span class="scilabid">result</span> <span class="scilaboperator">=</span> <span class="scilabid">plq_coDirect</span><span class="scilabopenclose">(</span><span class="scilabid">plqf</span><span class="scilabopenclose">)</span><span class="scilabdefault">,</span>
+<span class="scilabid">plq_plot</span><span class="scilabopenclose">(</span><span class="scilabid">plqf</span><span class="scilabdefault">,</span> <span class="scilabid">result</span><span class="scilabopenclose">)</span><span class="scilabdefault">;</span>
+
+%<span class="scilabcomment"> The hull of a more complicated function:</span>
+<span class="scilabid">plqf</span> <span class="scilaboperator">=</span><span class="scilabopenclose">[</span><span class="scilaboperator">-</span><span class="scilabnumber">3</span><span class="scilabdefault">,</span><span class="scilabnumber">1</span><span class="scilabdefault">,</span><span class="scilabnumber">8</span><span class="scilabdefault">,</span><span class="scilabnumber">16</span><span class="scilabdefault">;</span><span class="scilabnumber">0</span><span class="scilabdefault">,</span><span class="scilabnumber">0</span><span class="scilabdefault">,</span><span class="scilaboperator">-</span><span class="scilabnumber">1</span><span class="scilabdefault">,</span><span class="scilaboperator">-</span><span class="scilabnumber">2</span><span class="scilabdefault">;</span><span class="scilabnumber">3</span><span class="scilabdefault">,</span><span class="scilabnumber">0</span><span class="scilabdefault">,</span><span class="scilabnumber">1</span><span class="scilabdefault">,</span><span class="scilaboperator">-</span><span class="scilabnumber">2</span><span class="scilabdefault">;</span><span class="scilabconstants">inf</span><span class="scilabdefault">,</span><span class="scilabnumber">1</span><span class="scilabdefault">,</span><span class="scilaboperator">-</span><span class="scilabnumber">8</span><span class="scilabdefault">,</span><span class="scilabnumber">16</span><span class="scilabopenclose">]</span><span class="scilabdefault">;</span>
+<span class="scilabid">result</span> <span class="scilaboperator">=</span> <span class="scilabid">plq_coDirect</span><span class="scilabopenclose">(</span><span class="scilabid">plqf</span><span class="scilabopenclose">)</span><span class="scilabdefault">,</span>
+<span class="scilabid">plq_plot</span><span class="scilabopenclose">(</span><span class="scilabid">plqf</span><span class="scilabdefault">,</span> <span class="scilabid">result</span><span class="scilabopenclose">)</span><span class="scilabdefault">;</span></pre></td><td></td></tr></table></div></div>
+
+
+   <div class="refsection"><h3 class="title">See Also</h3><ul class="itemizedlist"><li class="member"><a href="plq_co.html" class="link">plq_co</a></li>
+
+       <li class="member"><a href="plq_coSplit.html" class="link">plq_coSplit</a></li>
+    
+      <li class="member"><a href="plq_function.html" class="link">plq_function</a></li></ul></div>
+
+  
+   <div class="refsection"><h3 class="title">Authors</h3><p class="para"><code class="literal">Bryan Gardiner</code>, University of British Columbia, BC, Canada</p></div>
+
+  
+   <div class="refsection"><h3 class="title">Used Functions</h3>
+    
+      <p class="para"><a href="plq_conv_on_interval.html" class="link">plq_conv_on_interval</a> is used to ensure that pieces of a function are convex on an interval.</p></div>
+      <div class="manualnavbar">
+          <table width="100%">
+<tr>
+      <td width="30%">
+    	<span class="previous"><a href="plq_co.html">&lt;&lt; plq_co</a></span>
+
+      </td>
+      <td width="40%" class="center">
+      	<span class="top"><a href="section_0f3ad76c2c3a02c3ad79b8b18f6e5928.html">plq</a></span>
+
+      </td>
+      <td width="30%" class="next">
+      	<span class="next"><a href="plq_coSplit.html">plq_coSplit &gt;&gt;</a></span>
+
+      </td>
+    </tr></table>
+      <hr />
+    </div>
+  </body>
+</html>
